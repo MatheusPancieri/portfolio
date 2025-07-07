@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-[url('./img/Background.png')] bg-cover m-8">
+    <header class="flex justify-between items-center mx-auto w-full max-w-4xl py-4">
+      <div>
+        <img src="./img/assinaturaMatheus.svg" alt="Logo assinatura Matheus" />
+      </div>
+      <nav>
+        <ul class="flex gap-8 text-sm font-medium text-white">
+          <li
+            class="box-border border border-white bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+          >
+            <a href="" class="font-inter font-bold">My Projects</a>
+          </li>
+          <li
+            class="box-border border border-white bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+          >
+            <a href="#sobre" class="font-inter font-bold">About Me</a>
+          </li>
+          <li
+            class="box-border border border-white bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+          >
+            <a href="" class="font-inter font-bold">Computer</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section
+      id="sobre"
+      class="flex justify-between items-center mx-auto w-full max-w-4xl py-4 mt-20"
+    >
+      <div>
+        <div class="w-fit">
+          <div class="flex items-end gap-2">
+            <h1 class="text-6xl text-white whitespace-nowrap font-anonymous">Matheus Pancieri</h1>
+            <span class="block bg-white h-px w-32 -translate-y-[5px]"></span>
+            <span class="text-white text-lg font-semibold translate-y-[2px]">20y</span>
+          </div>
+
+          <p class="text-white mt-8 leading-loose text-lg max-w-[700px] font-[Inter]">
+            I'm a <strong>Computer Engineering student</strong> from
+            <img
+              src="img/icons8-local-24.png"
+              alt="Location icon"
+              class="inline-block w-6 h-6 align-text-bottom filter invert"
+            />
+            Brazil, based in Campo Grande with experience in web development using
+            <strong>.NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS, and Tailwind</strong
+            >. I also design user interfaces in Figma, aiming for clean, responsive, and
+            user-friendly layouts.
+          </p>
+        </div>
+        <div>
+          <ul class="flex gap-8 text-sm font-medium text-white mt-10">
+            <li
+              class="box-border border border-white hover:bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+            >
+              <a href="" class="font-inter font-semibold">About</a>
+            </li>
+            <li
+              class="box-border border border-white hover:bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+            >
+              <a href="" class="font-inter font-semibold">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="px-6 py-12 max-w-6xl mx-auto mt-20">
+      <div class="flex justify-between items-end mb-4">
+        <h2 class="text-white text-xl font-anonymous font-semibold">My Projects</h2>
+        <p class="text-white text-sm font-anonymous">UI/UX Design</p>
+      </div>
+      <hr class="border-white/20 mb-8" />
+
+      <div class="grid grid-cols-6 auto-rows-[120px] gap-4">
+        <!-- Item 1 -->
+        <div
+          class="col-span-2 row-span-2 border border-white/20 rounded-xl bg-gradient-to-t from-white/10 to-transparent backdrop-blur-sm"
+        ></div>
+        <!-- Item 2 -->
+        <div class="col-span-2 row-span-3 border border-white/20 rounded-xl"></div>
+
+        <!-- Item 3 -->
+        <div class="col-span-2 row-span-4 border border-white/20 rounded-xl"></div>
+
+        <!-- Item 4 -->
+        <div class="col-span-1 row-span-3 border border-white/20 rounded-xl"></div>
+
+        <!-- Item 5 -->
+        <div class="col-span-1 row-span-2 border border-white/20 rounded-xl"></div>
+      </div>
+    </section>
+  </body>
+</html>
