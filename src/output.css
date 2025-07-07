@@ -566,20 +566,12 @@ video {
   grid-column: span 4 / span 4;
 }
 
-.col-start-1 {
-  grid-column-start: 1;
+.col-span-3 {
+  grid-column: span 3 / span 3;
 }
 
-.col-start-2 {
-  grid-column-start: 2;
-}
-
-.col-start-3 {
-  grid-column-start: 3;
-}
-
-.col-start-5 {
-  grid-column-start: 5;
+.col-span-5 {
+  grid-column: span 5 / span 5;
 }
 
 .row-span-2 {
@@ -594,16 +586,12 @@ video {
   grid-row: span 4 / span 4;
 }
 
-.row-start-1 {
-  grid-row-start: 1;
+.row-span-6 {
+  grid-row: span 6 / span 6;
 }
 
-.row-start-3 {
-  grid-row-start: 3;
-}
-
-.row-start-5 {
-  grid-row-start: 5;
+.row-span-1 {
+  grid-row: span 1 / span 1;
 }
 
 .m-8 {
@@ -613,6 +601,14 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .mt-10 {
@@ -625,14 +621,6 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
 }
 
 .box-border {
@@ -684,16 +672,12 @@ video {
   max-width: 56rem;
 }
 
-.max-w-\[700px\] {
-  max-width: 700px;
-}
-
 .max-w-6xl {
   max-width: 72rem;
 }
 
-.max-w-7xl {
-  max-width: 80rem;
+.max-w-\[700px\] {
+  max-width: 700px;
 }
 
 .-translate-y-\[5px\] {
@@ -710,16 +694,8 @@ video {
   grid-auto-rows: 120px;
 }
 
-.auto-rows-\[100px\] {
-  grid-auto-rows: 100px;
-}
-
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.grid-rows-6 {
-  grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
 .items-end {
@@ -738,12 +714,12 @@ video {
   gap: 0.5rem;
 }
 
-.gap-8 {
-  gap: 2rem;
-}
-
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .whitespace-nowrap {
@@ -756,10 +732,6 @@ video {
 
 .border {
   border-width: 1px;
-}
-
-.border-t {
-  border-top-width: 1px;
 }
 
 .border-white {
@@ -807,6 +779,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -815,16 +792,6 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .align-text-bottom {
@@ -837,11 +804,6 @@ video {
 
 .font-anonymous {
   font-family: "Anonymous Pro", monospace;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .text-6xl {
@@ -862,6 +824,16 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {
