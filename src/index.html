@@ -14,10 +14,18 @@
       href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body class="bg-[url('./img/Background.png')] bg-cover m-8">
-    <header class="flex justify-between items-center mx-auto w-full max-w-4xl py-4">
+    <header
+      class="flex justify-between items-center mx-auto w-full max-w-4xl py-4"
+    >
       <div>
         <img src="./img/assinaturaMatheus.svg" alt="Logo assinatura Matheus" />
       </div>
@@ -48,64 +56,124 @@
       <div>
         <div class="w-fit">
           <div class="flex items-end gap-2">
-            <h1 class="text-6xl text-white whitespace-nowrap font-anonymous">Matheus Pancieri</h1>
+            <h1 class="text-6xl text-white whitespace-nowrap font-anonymous">
+              Matheus Pancieri
+            </h1>
             <span class="block bg-white h-px w-32 -translate-y-[5px]"></span>
-            <span class="text-white text-lg font-semibold translate-y-[2px]">20y</span>
+            <span class="text-white text-lg font-semibold translate-y-[2px]"
+              >20y</span
+            >
           </div>
 
-          <p class="text-white mt-8 leading-loose text-lg max-w-[700px] font-[Inter]">
+          <p
+            class="text-white mt-8 leading-loose text-lg max-w-[700px] font-[Inter]"
+          >
             I'm a <strong>Computer Engineering student</strong> from
             <img
               src="img/icons8-local-24.png"
               alt="Location icon"
               class="inline-block w-6 h-6 align-text-bottom filter invert"
             />
-            Brazil, based in Campo Grande with experience in web development using
-            <strong>.NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS, and Tailwind</strong
-            >. I also design user interfaces in Figma, aiming for clean, responsive, and
-            user-friendly layouts.
+            Brazil, based in Campo Grande with experience in web development
+            using
+            <strong
+              >.NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS, and
+              Tailwind</strong
+            >. I also design user interfaces in Figma, aiming for clean,
+            responsive, and user-friendly layouts.
           </p>
         </div>
         <div>
           <ul class="flex gap-8 text-sm font-medium text-white mt-10">
             <li
-              class="box-border border border-white hover:bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+              id="about"
+              class="box-border border border-white bg-white/10 hover:bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl cursor-pointer"
             >
-              <a href="" class="font-inter font-semibold">About</a>
+              <a href="#" class="font-inter font-semibold">About</a>
             </li>
             <li
-              class="box-border border border-white hover:bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl"
+              id="contact"
+              class="box-border border border-white hover:bg-white/10 py-3 px-6 backdrop-blur-sm shadow-xl cursor-pointer"
             >
-              <a href="" class="font-inter font-semibold">Contact</a>
+              <a href="#" class="font-inter font-semibold">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </section>
     <section class="px-6 py-12 max-w-6xl mx-auto mt-20">
+      <!-- Cabeçalho -->
       <div class="flex justify-between items-end mb-4">
-        <h2 class="text-white text-2xl font-anonymous font-semibold">My Projects</h2>
-        <p class="text-white text-base font-anonymous">UI/UX Design</p>
+        <h2 class="text-white text-2xl font-anonymous font-semibold">
+          My Projects
+        </h2>
+        <p class="text-white text-base font-anonymous">UI/UX Design | Resume</p>
       </div>
+
+      <!-- Linha de separação -->
       <hr class="border-white/20 mb-8" />
 
-      <div class="grid grid-cols-6 auto-rows-[120px] gap-4">
-        <!-- Item 1 -->
-        <div
-          class="col-span-4 row-span-4 border border-white/20 rounded-xl bg-gradient-to-t from-white/10 to-transparent backdrop-blur-sm"
-        ></div>
-        <!-- Item 2 -->
-        <div class="col-span-2 row-span-6 border border-white/20 rounded-xl"></div>
+      <!-- Lista de projetos -->
+      <div class="space-y-6 font-anonymous text-white text-xl">
+        <button
+          class="w-full flex justify-between items-center hover:underline cursor-pointer transition-all duration-200"
+        >
+          <span class="flex items-center gap-2">
+            <span class="text-white/50">▸</span>
+            The Bliss Code
+          </span>
+          <span class="text-white/50 text-sm">02/2025</span>
+        </button>
+        <div class="border-t border-white/20 w-full"></div>
 
-        <!-- Item 3 -->
-        <div class="col-span-1 row-span-3 border border-white/20 rounded-xl"></div>
+        <button
+          class="w-full flex justify-between items-center hover:underline cursor-pointer transition-all duration-200"
+        >
+          <span class="flex items-center gap-2">
+            <span class="text-white/50">▸</span>
+            Akademia
+          </span>
+          <span class="text-white/50 text-sm">04/2025</span>
+        </button>
+        <div class="border-t border-white/20 w-full"></div>
 
-        <!-- Item 4 -->
-        <div class="col-span-3 row-span-2 border border-white/20 rounded-xl"></div>
+        <button
+          class="w-full flex justify-between items-center hover:underline cursor-pointer transition-all duration-200"
+        >
+          <span class="flex items-center gap-2">
+            <span class="text-white/50">▸</span>
+            Baikal
+          </span>
+          <span class="text-white/50 text-sm">12/2024</span>
+        </button>
+        <div class="border-t border-white/20 w-full"></div>
 
-        <!-- Item 5 -->
-        <div class="col-span-5 row-span-1 border border-white/20 rounded-xl"></div>
+        <button
+          class="w-full flex justify-between items-center hover:underline cursor-pointer transition-all duration-200"
+        >
+          <span class="flex items-center gap-2">
+            <span class="text-white/50">▸</span>
+            CDM
+          </span>
+          <span class="text-white/50 text-sm">10/2024</span>
+        </button>
+        <div class="border-t border-white/20 w-full"></div>
       </div>
     </section>
+
+    <script>
+      const about = document.getElementById("about");
+      const contact = document.getElementById("contact");
+
+      about.addEventListener("click", () => {
+        about.classList.add("bg-white/10");
+        contact.classList.remove("bg-white/10");
+      });
+
+      contact.addEventListener("click", () => {
+        contact.classList.add("bg-white/10");
+        about.classList.remove("bg-white/10");
+      });
+    </script>
   </body>
 </html>

@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js}'],
+  content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
       fontFamily: {
-        anonymous: ['"Anonymous Pro"', 'monospace'],
+        anonymous: ['"Anonymous Pro"', "monospace"],
+        cursive: ["PhotographSignature", "cursive"],
+        windsong: ["WindSong", "cursive"],
       },
     },
   },
