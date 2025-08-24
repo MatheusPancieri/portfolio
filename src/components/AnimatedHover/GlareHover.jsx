@@ -3,8 +3,7 @@ import { useRef } from "react";
 const GlareHover = ({
   width = "auto",
   height = "auto",
-  background = "transparent", // 👈 padrão transparente
-  borderRadius = "0px", // 👈 padrão sem arredondar
+  background = "transparent", 
   children,
   glareColor = "#ffffff",
   glareOpacity = 0.5,
