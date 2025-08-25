@@ -131,7 +131,7 @@ const Resume = () => {
   const [activeTab, setActiveTab] = React.useState("work");
 
   return (
-    <section className="px-6 py-12 max-w-6xl mx-auto mt-5">
+    <section className="px-6 py-12 max-w-6xl mx-auto mt-5" id="resume">
       <div className="flex justify-between items-end mb-4">
         <h2 className="text-white text-2xl font-anonymous font-semibold">
           Work{" "}

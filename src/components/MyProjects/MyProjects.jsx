@@ -55,7 +55,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="px-6 py-12 max-w-6xl mx-auto mt-20">
+    <section className="px-6 py-12 max-w-6xl mx-auto mt-20" id="projects">
       {/* Cabeçalho */}
       <div className="flex justify-between items-end mb-4">
         <h2 className="text-white text-2xl font-anonymous font-semibold">

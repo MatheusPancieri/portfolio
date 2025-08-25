@@ -21,7 +21,7 @@ const Header = () => {
               playOnce={false}
               className="box-border border border-white py-3 px-6 backdrop-blur-sm shadow-xl transition duration-300 hover:scale-110 hover:rounded-xs"
             >
-              <a href="" className="font-inter font-bold text-white">
+              <a href="#about" className="font-inter font-bold text-white">
                 About Me
               </a>
             </GlareHover>
@@ -36,7 +36,7 @@ const Header = () => {
               playOnce={false}
               className="box-border border border-white py-3 px-6 backdrop-blur-sm shadow-xl transition duration-300 hover:scale-110 hover:rounded-xs"
             >
-              <a href="" className="font-inter font-bold text-white">
+              <a href="#projects" className="font-inter font-bold text-white">
                 My Projects
               </a>
             </GlareHover>
