@@ -12,6 +12,9 @@ const projects = [
     image: BlissCodeImage,
     description:
       "I designed the UI/UX for The Bliss Code, a landing page in the self-development niche. I focused on a clear content structure, storytelling, and a visual identity that conveys positivity and trust. The result is a responsive, engaging, and conversion-driven page that improves user experience and credibility",
+    descriptionModal:
+      "In this project, I worked solely on UI/UX design. The goal was to create a clear and engaging landing page that conveys credibility and encourages conversion. I structured the content based on storytelling, visual hierarchy, and a light identity that reinforces self-growth and positivity.",
+    technologies: ["Figma", "After Effects", "Photoshop"],
   },
   {
     name: "Akademia",
@@ -19,18 +22,9 @@ const projects = [
     image: AkademiaImage,
     description:
       "I designed the UI/UX for Akademia do Corpo, a fitness website focused on attracting new members. The project emphasized a bold black-and-yellow identity, clear content structure, and strategic CTAs. The final result is a responsive and engaging website that builds trust and drives conversions.",
-  },
-  {
-    name: "Baikal",
-    date: "12/2024",
-    image: "",
-    description: "Descrição do projeto Baikal...",
-  },
-  {
-    name: "CDM",
-    date: "10/2024",
-    image: "",
-    description: "Descrição do projeto CDM...",
+    descriptionModal:
+      "I was responsible for the UI/UX design. The challenge was to communicate energy, confidence, and action. I created a strong black-and-yellow visual identity, organized the content for easy navigation, and designed strategic CTAs to drive conversions. The final result is a responsive and impactful layout.",
+    technologies: ["Figma", "After Effects", "Photoshop"],
   },
 ];
 
@@ -67,8 +61,8 @@ const Projects = () => {
         <h2 className="text-white text-2xl font-anonymous font-semibold">
           My Projects
         </h2>
-        <p className="text-white text-base font-anonymous">
-          UI/UX Design | Resume
+        <p className="text-white/40 text-base font-anonymous">
+          UI/UX Design | Developer
         </p>
       </div>
 
@@ -117,9 +111,45 @@ const Projects = () => {
                         />
                       )}
                       <Modal open={open} onClose={() => setOpen(false)}>
-                        {" "}
-                        <p className="mx-auto text-red-700">Salve</p>
+                        <div className="bg-neutral-900 rounded-lg max-w-5xl mx-auto text-white p-6">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Imagem lado esquerdo */}
+                            <div className="flex items-center justify-center">
+                              <img
+                                src={project.image}
+                                alt={project.name}
+                                className="rounded-lg shadow-2xl border border-white/20 object-cover w-full h-auto"
+                              />
+                            </div>
+
+                            {/* Study case lado direito */}
+                            <div className="flex flex-col justify-center space-y-4">
+                              <div>
+                                <h2 className="text-2xl font-bold">
+                                  {project.name}
+                                </h2>
+                                <p className="text-sm text-gray-400">
+                                  {project.date}
+                                </p>
+                              </div>
+
+                              <p className="text-gray-300 leading-relaxed">
+                                {project.descriptionModal}
+                              </p>
+
+                              <div>
+                                <h3 className="text-sm font-semibold text-gray-200">
+                                  Tools
+                                </h3>
+                                <p className="text-sm text-gray-400">
+                                  {project.technologies.join(", ")}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </Modal>
+
                       <div className="flex flex-col justify-between md:w-1/2">
                         <h1 className="text-2xl font-bold">{project.name}</h1>
                         <p className="text-base text-white/80">
@@ -133,7 +163,7 @@ const Projects = () => {
             </div>
 
             {/* Divider */}
-            {index !== projects.length - 1 && (
+            {index !== projects.length && (
               <div className="border-t border-white/20 w-full"></div>
             )}
           </React.Fragment>
