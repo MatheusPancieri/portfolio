@@ -1,6 +1,5 @@
-import { div, h1, h2 } from "framer-motion/client";
-import React from "react";
-import Fiems from "../../assets/imgs/fiems-icon.png";
+import { useState } from "react";
+import Fiems from "../../assets/imgs/fiems-icon.webp";
 import GrupoSix from "../../assets/imgs/grupo_six_logo.webp";
 import Alvorada from "../../assets/imgs/alvorada_logo.webp";
 import ExperienceItem from "../ExperienceItem/ExperienceItem.jsx";
@@ -128,7 +127,7 @@ const experiences = [
   },
 ];
 const Resume = () => {
-  const [activeTab, setActiveTab] = React.useState("work");
+  const [activeTab, setActiveTab] = useState("work");
 
   return (
     <section className="px-6 py-12 max-w-6xl mx-auto mt-5" id="resume">
@@ -146,45 +145,37 @@ const Resume = () => {
       </div>
       {/* Linha de separação */}
       <hr className="border-white/20 mb-8" />
-      <div>
-        <div className="flex justify-center gap-2">
-          <button
-            className={`w-80 py-2 border border-white/20 text-white rounded-l-full transition ${
-              activeTab === "work" ? "bg-white/10" : "hover:bg-white/10"
-            }`}
-            onClick={() => setActiveTab("work")}
-          >
-            Work Experience
-          </button>
 
-          <button
-            className={`w-80 py-2 border border-white/20 text-white rounded-r-full transition ${
-              activeTab === "education" ? "bg-white/10" : "hover:bg-white/10"
-            }`}
-            onClick={() => setActiveTab("education")}
-          >
-            Education
-          </button>
-        </div>
-        <div className="mt-6 flex justify-center">
-          <div className="w-160 py-4 px-6 border border-white/20 rounded-xl text-white text-center">
-            {activeTab === "work" && (
-              <div className="space-y-8">
-                {experiences.map((exp, i) => (
-                  <ExperienceItem key={i} exp={exp} />
-                ))}
-              </div>
-            )}
+      <div className="flex items-center gap-6 font-anonymous">
+        <button
+          onClick={() => setActiveTab("work")}
+          className={`pb-1 text-sm uppercase tracking-wide border-b-2 transition-colors ${
+            activeTab === "work"
+              ? "text-white border-white"
+              : "text-white/40 border-transparent hover:text-white/70"
+          }`}
+        >
+          Work Experience
+        </button>
+        <span className="text-white/20">/</span>
+        <button
+          onClick={() => setActiveTab("education")}
+          className={`pb-1 text-sm uppercase tracking-wide border-b-2 transition-colors ${
+            activeTab === "education"
+              ? "text-white border-white"
+              : "text-white/40 border-transparent hover:text-white/70"
+          }`}
+        >
+          Education
+        </button>
+      </div>
 
-            {activeTab === "education" && (
-              <div className="space-y-8">
-                {education.map((edu, i) => (
-                  <ExperienceItem key={i} exp={edu} />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+      <div className="mt-10 max-w-3xl space-y-10">
+        {activeTab === "work" &&
+          experiences.map((exp, i) => <ExperienceItem key={i} exp={exp} />)}
+
+        {activeTab === "education" &&
+          education.map((edu, i) => <ExperienceItem key={i} exp={edu} />)}
       </div>
     </section>
   );

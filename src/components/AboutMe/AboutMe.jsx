@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import locationIcon from "../../assets/imgs/icons8-local-24.png";
+import { useState } from "react";
+import locationIcon from "../../assets/imgs/icons8-local-24.webp";
 import GlareHover from "../AnimatedHover/GlareHover.jsx";
 
 const AboutMe = () => {
@@ -7,14 +7,14 @@ const AboutMe = () => {
 
   return (
     <section
-      id="sobre"
+      id="about"
       className="flex justify-between items-center mx-auto w-full max-w-4xl py-4 mt-20"
     >
       <div>
         {/* Cabeçalho */}
         <div className="w-fit">
           <div className="flex items-end gap-2">
-            <h1 className="text-6xl text-white whitespace-nowrap font-['Anonymous_Pro']">
+            <h1 className="text-6xl text-white whitespace-nowrap font-anonymous">
               Matheus Pancieri
             </h1>
             <span className="block bg-white h-px w-32 -translate-y-[5px]"></span>
@@ -24,7 +24,7 @@ const AboutMe = () => {
           </div>
 
           {/* Conteúdo condicional */}
-          <div className="mt-8 text-lg max-w-[700px] font-[Inter]">
+          <div className="mt-8 text-lg max-w-[700px] font-inter">
             {activeTab === "about" && (
               <p className="text-white leading-loose">
                 I'm a <strong>Computer Engineering student</strong> from{" "}
