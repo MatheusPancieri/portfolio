@@ -1,4 +1,4 @@
 import ReactDOM from "react-dom/client";
-import HomePage from "./pages/HomePage/HomePage.jsx";
+import App from "./App.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<HomePage />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

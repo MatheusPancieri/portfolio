@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --font-anonymous: "Anonymous Pro", monospace;
-  --font-inter: "Inter", sans-serif;
+  /* font-anonymous: titles & names. font-inter: long-form reading text.
+     Class names kept as-is even though the underlying fonts changed, so
+     every existing font-anonymous/font-inter usage picks up the new look
+     without touching every component. Anonymous Pro / Inter stay as the
+     fallback while the local font files below aren't present yet. */
+  --font-anonymous: "IBM CGA", "Anonymous Pro", monospace;
+  --font-inter: "Perfect DOS VGA 437", "Inter", sans-serif;
 
   /* Desktop OS palette — warm beige + yellow/orange */
   --color-desk: #e8e1cf;
@@ -21,6 +26,31 @@
   --shadow-window: 8px 8px 0 0 rgba(59, 51, 37, 0.35);
 }
 
+/* Drop the font files here — any of woff2/woff/ttf works, the browser
+   picks the first one it finds and silently skips the missing formats. */
+@font-face {
+  font-family: "IBM CGA";
+  src:
+    url("./assets/fonts/IBMCGA.woff2") format("woff2"),
+    url("./assets/fonts/IBMCGA.woff") format("woff"),
+    url("./assets/fonts/IBMCGA.ttf") format("truetype");
+  font-display: swap;
+  /* IBM CGA's glyphs are drawn much bigger within their em-box than
+     Anonymous Pro's — same font-size read as noticeably heavier/larger.
+     size-adjust scales it down globally instead of hunting down every
+     text-* class that uses font-anonymous. */
+  size-adjust: 65%;
+}
+
+@font-face {
+  font-family: "Perfect DOS VGA 437";
+  src:
+    url("./assets/fonts/PerfectDOSVGA437.woff2") format("woff2"),
+    url("./assets/fonts/PerfectDOSVGA437.woff") format("woff"),
+    url("./assets/fonts/PerfectDOSVGA437.ttf") format("truetype");
+  font-display: swap;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -28,7 +58,6 @@ html {
 body {
   background-color: var(--color-desk);
   color: var(--color-ink);
-  overflow: hidden;
 }
 
 /* Film grain — background texture layer; content renders above it */
@@ -97,13 +126,36 @@ body {
 }
 
 /* Contact success check */
-@keyframes check-draw {
-  to { stroke-dashoffset: 0; }
+@keyframes check-pop {
+  0% { opacity: 0; transform: scale(0.5); }
+  70% { opacity: 1; transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
-.check-draw {
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: check-draw 0.5s 0.15s ease-out forwards;
+.check-pop {
+  animation: check-pop 0.4s 0.1s cubic-bezier(0.2, 0.9, 0.3, 1.2) backwards;
+}
+
+/* Timeline dot: blocky octagon instead of a smooth circle */
+.pixel-dot {
+  clip-path: polygon(
+    25% 0%, 75% 0%,
+    75% 25%, 100% 25%,
+    100% 75%, 75% 75%,
+    75% 100%, 25% 100%,
+    25% 75%, 0% 75%,
+    0% 25%, 25% 25%
+  );
+}
+
+/* Desktop icon hover bounce */
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-7px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-3px); }
+}
+.group:hover .icon-bounce {
+  animation: icon-bounce 0.6s ease-in-out;
 }
 
 /* Mobile fullscreen app open */

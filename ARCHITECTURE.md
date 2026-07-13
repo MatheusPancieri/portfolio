@@ -15,53 +15,67 @@ idioma, e em telas pequenas tudo vira um launcher de celular.
 | Ícones | react-icons (placeholders até termos ícones próprios) |
 | Fontes | Anonymous Pro (mono, UI do "OS") + Inter (textos longos) |
 
-Não há router, state manager externo nem backend — tudo é estado React em
-memória, com `localStorage`/`sessionStorage` para persistir pequenas coisas.
+Router: `react-router-dom` (`BrowserRouter`), só duas rotas — `/` (o "OS") e
+`/old-version` (o portfólio pré-rebuild, ver seção própria). Sem state
+manager externo nem backend — tudo é estado React em memória, com
+`localStorage`/`sessionStorage` para persistir pequenas coisas, e EmailJS
+pro formulário de contato (client-side, sem servidor próprio).
 
 ## Mapa de pastas
 
 ```
 src/
-├── index.css                  # tema (@theme), grain, animações CSS globais
-├── main.jsx                   # bootstrap React
-├── pages/HomePage/HomePage.jsx  # shell raiz: boot, mobile vs desktop
+├── index.css                       # tema (@theme), grain, animações CSS globais
+├── main.jsx                        # bootstrap React
+├── App.jsx                         # BrowserRouter + Routes ("/" e "/old-version")
 ├── assets/
-│   ├── imgs/                  # fotos de projetos, logos, assinatura SVG
-│   └── pet/                   # spritesheets do bichinho (4 PNGs)
-├── os/                        # todo o "sistema operacional"
-│   ├── content.js             # TODO o texto do site em EN e PT + dados
-│   ├── i18n.jsx               # LangProvider / useLang (troca EN↔PT)
-│   ├── WindowManager.jsx      # estado das janelas (reducer + context)
-│   ├── LaunchContext.jsx      # abstração "abrir app" (desktop e mobile)
-│   ├── apps.jsx               # registro dos apps (ícone, tamanho, componente)
-│   ├── Desktop.jsx            # shell desktop: grain, logo, ícones, janelas
-│   ├── DesktopIcon.jsx        # ícone clicável da área de trabalho
-│   ├── Window.jsx             # janela: chrome, animações de zoom, drag
-│   ├── Taskbar.jsx            # barra inferior: pet, janelas abertas, EN/PT, relógio
-│   ├── TaskbarPet.jsx         # bichinho de spritesheet clicável
-│   ├── Clock.jsx              # relógio/data (locale segue o idioma)
-│   ├── BootScreen.jsx         # tela de boot com barra de progresso
-│   ├── MobileLauncher.jsx     # modo celular: grade de apps + app fullscreen
-│   └── apps/                  # conteúdo de cada janela
-│       ├── HomeApp.jsx        # home.mdx — intro estilo README + atalhos
-│       ├── AboutApp.jsx       # about.me — abas Bio/Experiência/Formação
-│       ├── WorksApp.jsx       # works — lista de projetos + detalhe
-│       ├── ContactApp.jsx     # contact — formulário (envio fake por enquanto)
-│       └── ChessApp.jsx       # chess.com — placeholder "em breve"
-└── components/                # LEGADO do layout antigo — nada importa daqui;
-                               # pode ser apagado quando quiser
+│   ├── imgs/                       # fotos de projetos, logos, assinatura SVG
+│   ├── icons/                      # ícones dos apps (webp)
+│   └── pet/                        # spritesheets do bichinho (4 PNGs)
+├── context/                        # providers React (Context + hooks de consumo)
+│   ├── i18n.jsx                    # LangProvider / useLang (troca EN↔PT)
+│   ├── WindowManager.jsx           # estado das janelas (reducer + context)
+│   └── LaunchContext.jsx           # abstração "abrir app" (desktop e mobile)
+├── utils/
+│   ├── content.js                  # TODO o texto do site em EN e PT + dados + LINKS
+│   └── useIconPositions.js         # hook: posições dos ícones do desktop (localStorage)
+├── components/                     # peças do "sistema operacional"
+│   ├── IconImg.jsx                 # factory: <img> webp → componente Icon
+│   ├── Desktop/Desktop.jsx         # shell desktop: grain, logo, ícones, janelas
+│   ├── DesktopIcon/DesktopIcon.jsx # ícone clicável e arrastável da área de trabalho
+│   ├── Window/Window.jsx           # janela: chrome, animações de zoom, drag
+│   ├── Taskbar/Taskbar.jsx         # barra inferior: pet, janelas abertas, EN/PT, relógio
+│   ├── TaskbarPet/TaskbarPet.jsx   # bichinho de spritesheet clicável
+│   ├── Clock/Clock.jsx             # relógio/data (locale segue o idioma)
+│   ├── BootScreen/BootScreen.jsx   # tela de boot com barra de progresso
+│   ├── MobileLauncher/MobileLauncher.jsx  # modo celular: grade de apps + app fullscreen
+│   └── apps/                       # registro + conteúdo de cada janela
+│       ├── apps.jsx                # registro dos apps (ícone, tamanho, componente)
+│       ├── HomeApp.jsx             # home.mdx — intro estilo README + atalhos
+│       ├── AboutApp.jsx            # about.me — abas Bio/Experiência/Formação
+│       ├── WorksApp.jsx            # works — lista de projetos + detalhe
+│       ├── ContactApp.jsx          # contact — formulário com Zod + react-hook-form + EmailJS
+│       └── ChessApp.jsx            # chess.com — placeholder "em breve"
+└── pages/
+    ├── Desktop/
+    │   └── DesktopPage.jsx         # rota "/" — shell raiz: boot, mobile vs desktop
+    └── OldVersion/
+        ├── OldVersionPage.jsx      # rota "/old-version" — portfólio pré-rebuild
+        └── components/             # componentes do layout antigo (Sidebar, AboutMe, MyProjects, Resume, ...)
 ```
 
 ## Fluxo de inicialização
 
-1. `main.jsx` renderiza `HomePage`.
-2. `HomePage` monta dois providers globais:
+1. `main.jsx` renderiza `App`, que monta o `BrowserRouter` com as rotas `/`
+   (`DesktopPage`) e `/old-version` (`OldVersionPage`).
+2. `DesktopPage` monta dois providers globais:
    - `LangProvider` (idioma) e `WindowsProvider` (janelas).
 3. Decide o shell pela largura da tela (`< 768px` = mobile, com listener de
    resize): `<MobileLauncher />` ou `<Desktop />`.
 4. Se `sessionStorage["os-booted"]` não existe, mostra o `BootScreen` por
    ~2s (barra de progresso animada em CSS, `boot-fill`), grava a flag e
    some com fade. Por sessão de navegador, o boot só aparece uma vez.
+   `/old-version` não passa por nada disso — é uma página independente.
 
 ## Tema e grain
 
@@ -83,10 +97,10 @@ Tudo é definido em [src/index.css](src/index.css):
 
 ## Idioma (i18n)
 
-- [content.js](src/os/content.js) tem **todo** o texto do site duplicado em
+- [content.js](src/utils/content.js) tem **todo** o texto do site duplicado em
   dois objetos: `en` e `pt` (labels, bio, projetos, experiências, formação).
   Para editar qualquer texto do site, é **só mexer nesse arquivo**.
-- [i18n.jsx](src/os/i18n.jsx) expõe `useLang()` → `{ lang, toggleLang, c }`,
+- [i18n.jsx](src/context/i18n.jsx) expõe `useLang()` → `{ lang, toggleLang, c }`,
   onde `c` é o objeto de conteúdo do idioma atual. Os componentes leem tudo
   de `c` (ex.: `c.about.tabs.bio`).
 - O botão EN/PT fica na taskbar; a escolha persiste em `localStorage["os-lang"]`.
@@ -94,7 +108,7 @@ Tudo é definido em [src/index.css](src/index.css):
 
 ## Gerenciador de janelas
 
-[WindowManager.jsx](src/os/WindowManager.jsx) é um `useReducer` dentro de um
+[WindowManager.jsx](src/context/WindowManager.jsx) é um `useReducer` dentro de um
 context. Cada janela é um objeto:
 
 ```js
@@ -113,7 +127,7 @@ Detalhes importantes:
 - A API (`open`, `close`, ...) é um objeto estável em `useRef`, então
   consumidores não re-renderizam à toa.
 
-## A janela ([Window.jsx](src/os/Window.jsx))
+## A janela ([Window.jsx](src/components/Window/Window.jsx))
 
 É aqui que mora a mágica das animações estilo macOS:
 
@@ -142,25 +156,25 @@ Detalhes importantes:
 
 ## Registro de apps e lançamento
 
-[apps.jsx](src/os/apps.jsx) é a única lista de apps. Cada entrada:
+[apps.jsx](src/components/apps/apps.jsx) é a única lista de apps. Cada entrada:
 
 ```js
 { id, label: (c) => ..., Icon, Component, w, h }   // app com janela
-{ id, label, Icon, external: "https://..." }        // link externo (github)
+{ id, label, Icon, external: "https://..." }        // link externo (github, discord)
 ```
 
-**Para adicionar um app novo**: criar o componente em `src/os/apps/`,
+**Para adicionar um app novo**: criar o componente em `src/components/apps/`,
 adicionar textos no `content.js` (en + pt) e uma entrada aqui. Desktop,
 taskbar e mobile passam a conhecê-lo automaticamente.
 
-[LaunchContext.jsx](src/os/LaunchContext.jsx) existe para o `HomeApp` (e
+[LaunchContext.jsx](src/context/LaunchContext.jsx) existe para o `HomeApp` (e
 qualquer app) poder abrir outros apps sem saber em qual shell está: no
 desktop o launch abre janela, no mobile abre fullscreen. Links externos
 abrem em nova aba nos dois casos.
 
 ## Taskbar
 
-[Taskbar.jsx](src/os/Taskbar.jsx) (56px, `TASKBAR_H`):
+[Taskbar.jsx](src/components/Taskbar/Taskbar.jsx) (56px, `TASKBAR_H`):
 
 - **Pet** (esquerda) → ver seção abaixo.
 - **Botões de janelas abertas**: um por janela, com `id="taskbtn-<id>"`
@@ -170,7 +184,7 @@ abrem em nova aba nos dois casos.
 
 ## O bichinho (TaskbarPet)
 
-[TaskbarPet.jsx](src/os/TaskbarPet.jsx) + spritesheets em `src/assets/pet/`:
+[TaskbarPet.jsx](src/components/TaskbarPet/TaskbarPet.jsx) + spritesheets em `src/assets/pet/`:
 
 | Arquivo | Frames | Quando toca |
 |---|---|---|
@@ -198,12 +212,24 @@ abrem em nova aba nos dois casos.
 
 ## Modo mobile
 
-[MobileLauncher.jsx](src/os/MobileLauncher.jsx), ativo abaixo de 768px:
+[MobileLauncher.jsx](src/components/MobileLauncher/MobileLauncher.jsx), ativo abaixo de 768px:
 
 - Barra de status no topo (pet + EN/PT + relógio).
 - Grade 3 colunas com os mesmos apps do registro.
 - Tocar um app abre **fullscreen** com animação `app-zoom-in` e um header
   com título + botão fechar. Sem janelas/drag no mobile — de propósito.
+
+## `/old-version` — o portfólio pré-rebuild
+
+[OldVersionPage.jsx](src/pages/OldVersion/OldVersionPage.jsx) recupera o
+layout de antes do rebuild pra OS (`Background` + `Sidebar` com nav por
+âncora + `AboutMe` + `MyProjects` + `Resume`, ids `#about`/`#projects`/`#resume`).
+Vive isolado em `src/pages/OldVersion/components/` — nada dali é usado pelo
+resto do site. Diferente do `/`, depende de **scroll normal do documento**
+(por isso o `body` não tem mais `overflow: hidden` global — cada shell da OS
+já se auto-contém com `fixed inset-0 overflow-hidden`, então tirar essa regra
+do `body` não muda nada em `/`). Mostra um aviso fullscreen em telas
+`< 975px` em vez do layout (não é responsivo, de propósito — é o legado).
 
 ## Persistência (resumo)
 
@@ -224,12 +250,6 @@ npm run lint     # eslint
 
 ## Pendências conhecidas
 
-- **Formulário de contato é fake**: mostra sucesso mas não envia nada
-  (`ContactApp.jsx` tem um `TODO`). Plano: EmailJS ou Formspree.
-- **Ícones dos apps** são placeholders do react-icons — a ideia é desenhar
-  um ícone próprio por app.
 - **chess.com** é só o placeholder "em breve" — o jogo de xadrez virá depois.
-- **`src/components/` é o layout antigo**, morto (nada importa de lá).
-  Mantido só porque tinha alterações não commitadas; pode apagar.
 - O "Other" extra de OS que você marcou na enquete inicial nunca foi
   especificado — em aberto.
