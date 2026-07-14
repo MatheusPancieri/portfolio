@@ -55,7 +55,7 @@ src/
 │       ├── AboutApp.jsx            # about.me — abas Bio/Experiência/Formação
 │       ├── WorksApp.jsx            # works — lista de projetos + detalhe
 │       ├── ContactApp.jsx          # contact — formulário com Zod + react-hook-form + EmailJS
-│       └── ChessApp.jsx            # chess.com — placeholder "em breve"
+│       └── ChessApp.jsx            # chess.com — xadrez completo (chess.js + sprites em src/assets/chess/)
 └── pages/
     ├── Desktop/
     │   └── DesktopPage.jsx         # rota "/" — shell raiz: boot, mobile vs desktop
@@ -248,8 +248,17 @@ npm run preview  # serve o build localmente
 npm run lint     # eslint
 ```
 
+## Créditos de assets
+
+- **Peças de xadrez** (`src/assets/chess/*.webp`): "Pixel Art Chess" por
+  Ajay Karat / Devil's Work.shop (devilswork.shop), licença
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Convertidas de
+  PNG pra WebP, sem alteração de conteúdo. O tabuleiro em si (cores das
+  casas) usa os tokens de tema do projeto, não o board.png do pacote.
+
 ## Pendências conhecidas
 
-- **chess.com** é só o placeholder "em breve" — o jogo de xadrez virá depois.
+- **Xadrez**: promoção de peão sempre vira dama automaticamente (sem
+  seletor de peça). Sem "desfazer lance" nem relógio.
 - O "Other" extra de OS que você marcou na enquete inicial nunca foi
   especificado — em aberto.

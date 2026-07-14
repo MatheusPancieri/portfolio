@@ -70,7 +70,7 @@ export const APPS = [
     label: (c) => c.desktop.apps.chess,
     Icon: IconImg(chessIcon),
     Component: ChessApp,
-    w: 420,
-    h: 480,
+    w: 460,
+    h: 560,
   },
 ];
