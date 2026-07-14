@@ -1,26 +1,50 @@
 import { useState } from "react";
 import { useLang } from "../../context/i18n.jsx";
+import Lightbox from "../Lightbox/Lightbox.jsx";
 
 const WorksApp = () => {
   const { c } = useLang();
   const [active, setActive] = useState(null);
+  const [zoomOpen, setZoomOpen] = useState(false);
   const project = active !== null ? c.works.projects[active] : null;
+
+  const goBack = () => {
+    setActive(null);
+    setZoomOpen(false);
+  };
 
   if (project) {
     return (
       <div className="p-6">
         <button
-          onClick={() => setActive(null)}
+          onClick={goBack}
           className="font-anonymous text-sm text-ink-soft hover:text-accent-deep cursor-pointer"
         >
           {c.works.back}
         </button>
 
-        <img
-          src={project.image}
-          alt={project.name}
-          className="mt-4 w-full rounded-md border-2 border-line shadow-[4px_4px_0_0_rgba(59,51,37,0.85)]"
-        />
+        <button
+          onClick={() => setZoomOpen(true)}
+          className="mt-4 block w-full cursor-zoom-in"
+          aria-label={c.works.zoomHint}
+        >
+          <img
+            src={project.image}
+            alt={project.name}
+            className="w-full rounded-md border-2 border-line shadow-[4px_4px_0_0_rgba(59,51,37,0.85)] hover:brightness-95 transition-[filter]"
+          />
+        </button>
+        <p className="mt-1.5 text-[11px] text-ink-soft font-inter text-center">
+          {c.works.zoomHint}
+        </p>
+        {zoomOpen && (
+          <Lightbox
+            src={project.image}
+            alt={project.name}
+            closeLabel={c.works.close}
+            onClose={() => setZoomOpen(false)}
+          />
+        )}
 
         <div className="mt-5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
           <h2 className="text-2xl font-anonymous font-bold text-ink">
@@ -30,6 +54,17 @@ const WorksApp = () => {
             {project.date}
           </span>
         </div>
+
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1.5 inline-flex items-center gap-1 text-xs font-anonymous font-bold text-accent-deep hover:text-ink underline underline-offset-2"
+          >
+            {c.works.visitSite} ↗
+          </a>
+        )}
 
         <p className="mt-3 text-ink/85 font-inter leading-relaxed">
           {project.descriptionFull}
@@ -62,6 +97,9 @@ const WorksApp = () => {
           {c.works.subtitle}
         </p>
       </div>
+      <p className="mt-1 text-xs text-ink-soft font-inter leading-relaxed">
+        {c.works.note}
+      </p>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         {c.works.projects.map((p, i) => (

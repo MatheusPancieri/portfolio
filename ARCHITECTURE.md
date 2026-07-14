@@ -49,11 +49,12 @@ src/
 │   ├── Clock/Clock.jsx             # relógio/data (locale segue o idioma)
 │   ├── BootScreen/BootScreen.jsx   # tela de boot com barra de progresso
 │   ├── MobileLauncher/MobileLauncher.jsx  # modo celular: grade de apps + app fullscreen
+│   ├── Lightbox/Lightbox.jsx       # modal de imagem: clique para tela cheia, clique de novo para 100%+scroll, Esc/backdrop fecha
 │   └── apps/                       # registro + conteúdo de cada janela
 │       ├── apps.jsx                # registro dos apps (ícone, tamanho, componente)
 │       ├── HomeApp.jsx             # home.mdx — intro estilo README + atalhos
 │       ├── AboutApp.jsx            # about.me — abas Bio/Experiência/Formação
-│       ├── WorksApp.jsx            # works — lista de projetos + detalhe
+│       ├── WorksApp.jsx            # works — lista de projetos + detalhe (imagem com zoom via Lightbox)
 │       ├── ContactApp.jsx          # contact — formulário com Zod + react-hook-form + EmailJS
 │       └── ChessApp.jsx            # chess.com — xadrez completo (chess.js + sprites em src/assets/chess/)
 └── pages/
@@ -88,6 +89,17 @@ Tudo é definido em [src/index.css](src/index.css):
   - `accent-deep` `#d98a00` · `accent-soft` `#fcd882` · `line` `#3b3325`
 - **Sombras "hard"** (deslocadas, sem blur, estilo retrô) usadas em botões,
   cards e janelas.
+- **Fontes pixel** (`IBM CGA` / `Perfect DOS VGA 437`, em `src/assets/fonts/`):
+  são fontes de codepage 437 — o cmap delas mapeia os code points de Latin-1
+  Supplement (ex.: U+00E1 "á" desenha "ß") e de General Punctuation (ex.:
+  U+2014 travessão "—" desenha "ù") pros símbolos do CP437, não pras letras
+  acentuadas / travessões/aspas de verdade. Os `@font-face` em `index.css`
+  restringem `unicode-range` a `U+0000-007F, U+0100-1FFF, U+2070-10FFFF`
+  (excluindo só esses dois blocos), o que força o navegador a cair pro
+  próximo da pilha (`Anonymous Pro` / `Inter`, carregadas via Google Fonts
+  no `index.html`) especificamente pros acentos e pontuação tipográfica do
+  português. Sem isso, todo texto em PT com á/ã/ç/é/ê/– /—/etc. sai com
+  símbolo trocado.
 - **Grain**: a classe `.grain-layer` é um `<div>` absoluto com um SVG inline
   (data URI) de `feTurbulence` com o alpha "thresholdado" — isso gera
   pontinhos distintos (speckle) em vez de chiado uniforme. **A ordem das

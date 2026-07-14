@@ -26,13 +26,10 @@
   --shadow-window: 8px 8px 0 0 rgba(59, 51, 37, 0.35);
 }
 
-/* Drop the font files here — any of woff2/woff/ttf works, the browser
-   picks the first one it finds and silently skips the missing formats. */
 @font-face {
   font-family: "IBM CGA";
   src:
     url("./assets/fonts/IBMCGA.woff2") format("woff2"),
-    url("./assets/fonts/IBMCGA.woff") format("woff"),
     url("./assets/fonts/IBMCGA.ttf") format("truetype");
   font-display: swap;
   /* IBM CGA's glyphs are drawn much bigger within their em-box than
@@ -40,15 +37,24 @@
      size-adjust scales it down globally instead of hunting down every
      text-* class that uses font-anonymous. */
   size-adjust: 65%;
+  /* These are codepage-437 fonts: their cmap maps Latin-1 Supplement
+     (e.g. U+00E1 "á" draws as "ß") and General Punctuation (e.g. U+2014
+     em dash draws as "ù") code points to unrelated CP437 symbols instead
+     of the real glyphs. Excluding both blocks forces accented letters and
+     dashes/quotes to fall through to Anonymous Pro, which has them. */
+  unicode-range: U+0000-007F, U+0100-1FFF, U+2070-10FFFF;
 }
 
 @font-face {
   font-family: "Perfect DOS VGA 437";
   src:
     url("./assets/fonts/PerfectDOSVGA437.woff2") format("woff2"),
-    url("./assets/fonts/PerfectDOSVGA437.woff") format("woff"),
     url("./assets/fonts/PerfectDOSVGA437.ttf") format("truetype");
   font-display: swap;
+  /* Same codepage-437 remapping issue as IBM CGA above — exclude Latin-1
+     Supplement and General Punctuation so PT accents and dashes/quotes
+     fall through to Inter instead of drawing the wrong CP437 symbol. */
+  unicode-range: U+0000-007F, U+0100-1FFF, U+2070-10FFFF;
 }
 
 html {

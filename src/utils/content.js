@@ -1,5 +1,11 @@
 import BlissCodeImage from '../assets/imgs/theblisscode-show.webp';
 import AkademiaImage from '../assets/imgs/akademia-show.webp';
+import CidadeDosMeninosImage from '../assets/imgs/cidadedosmeninos-show.webp';
+import ChatbotImage from '../assets/imgs/chatbot-show.webp';
+import DacImage from '../assets/imgs/dac-show.webp';
+import UpsellImage from '../assets/imgs/upsell-show.webp';
+import VslImage from '../assets/imgs/vsl-show.webp';
+import HexalogImage from '../assets/imgs/hexalog-show.webp';
 import Fiems from '../assets/imgs/logo-fiems.webp';
 import GrupoSix from '../assets/imgs/logo-gruposix.webp';
 import Alvorada from '../assets/imgs/logo-alvorada.webp';
@@ -141,15 +147,19 @@ const en = {
     subtitle: 'UI/UX Design | Developer',
     back: '← back',
     tools: 'Tools',
+    zoomHint: 'Click image to zoom',
+    close: 'Close',
+    visitSite: 'Visit site',
+    note: 'This is just some of my side projects that i take on in my free time, my main role is Full Stack Developer at O Grupo Six.',
     projects: [
       {
         name: 'The Bliss Code',
         date: '02/2025',
         image: BlissCodeImage,
         description:
-          'Landing page in the self-development niche. Clear content structure, storytelling, and a visual identity that conveys positivity and trust.',
+          'Vibrant, engaging landing page with color direction and visual hierarchy aligned to the brand’s transformation-focused positioning.',
         descriptionFull:
-          'In this project, I worked solely on UI/UX design. The goal was to create a clear and engaging landing page that conveys credibility and encourages conversion. I structured the content based on storytelling, visual hierarchy, and a light identity that reinforces self-growth and positivity.',
+          'I worked as UI/UX designer on the landing page, translating the brand’s energy into interface design. I worked color direction, visual rhythm, and content hierarchy to build a vibrant, engaging page aligned with the product’s transformation-focused proposition.',
         technologies: ['Figma', 'After Effects', 'Photoshop'],
       },
       {
@@ -161,6 +171,68 @@ const en = {
         descriptionFull:
           'I was responsible for the UI/UX design. The challenge was to communicate energy, confidence, and action. I created a strong black-and-yellow visual identity, organized the content for easy navigation, and designed strategic CTAs to drive conversions. The final result is a responsive and impactful layout.',
         technologies: ['Figma', 'After Effects', 'Photoshop'],
+      },
+      {
+        name: 'Cidade dos Meninos',
+        date: '05/2025',
+        image: CidadeDosMeninosImage,
+        description:
+          'Institutional website with UI/UX design focused on conveying warmth and organizing information clearly and accessibly.',
+        descriptionFull:
+          'I was responsible for the UI/UX design of the institutional website. The focus was building a coherent visual identity and a navigation architecture that conveys warmth, prioritizing information hierarchy and clarity. Each section was structured so visitors can find what they need with minimal effort, maintaining visual consistency throughout.',
+        technologies: ['Figma', 'Illustrator', 'Photoshop'],
+      },
+      {
+        name: 'IA Chatbot',
+        date: '06/2025',
+        image: ChatbotImage,
+        description:
+          'Chatbot interface inspired by current AI product references, adapted to the brand’s visual identity.',
+        descriptionFull:
+          'I designed the chatbot interface based on leading current AI product references, adapting visual and interaction patterns to the brand identity. I prioritized a clean, familiar, and fluid experience — from onboarding to conversation — so users feel comfortable from the first interaction.',
+        technologies: ['Figma', 'Illustrator'],
+      },
+      {
+        name: 'DAC',
+        date: '07/2025',
+        image: DacImage,
+        description:
+          'Landing page for a computer-vision forest fire detection system, communicating complex technology clearly.',
+        descriptionFull:
+          'I designed the landing page for a computer-vision-based forest fire detection system. The goal was to communicate the product clearly and accessibly, translating complex technology into an experience any visitor can easily understand.',
+        technologies: ['Figma', 'Photoshop', 'Illustrator'],
+      },
+      {
+        name: 'YourHealthGuru',
+        date: '08/2025',
+        image: UpsellImage,
+        description:
+          'Upsell offer page structured for clarity and objectivity, reducing friction in the purchase decision.',
+        descriptionFull:
+          'I structured the offer page with a focus on clarity and objectivity, organizing information directly to reduce noise in the decision-making process. I prioritized benefits, social proof, and the call to action in a hierarchy that lets users grasp the offer’s value quickly.',
+        technologies: ['Figma', 'Photoshop'],
+      },
+      {
+        name: 'Healthy',
+        date: '09/2025',
+        image: VslImage,
+        link: 'https://desafio-ogruposix-matheuspancieri.vercel.app/',
+        description:
+          'Video sales letter (VSL) page with an early hook and content hierarchy built to guide the narrative toward conversion.',
+        descriptionFull:
+          'I built a video sales letter (VSL) page focused on creating a strong hook right from the start and improving reading flow. I organized content hierarchy and pacing to naturally guide users through the narrative toward conversion.',
+        technologies: ['Figma', 'After Effects', 'Photoshop'],
+      },
+      {
+        name: 'Hexalog',
+        date: '10/2025',
+        image: HexalogImage,
+        link: 'https://hexalogfull.com/',
+        description:
+          'Landing page for a formulation and manufacturing company, with a bold, dark, high-impact aesthetic.',
+        descriptionFull:
+          'I designed the landing page for a product formulation and manufacturing company, with a bold, dark, high-impact aesthetic. I built a strong, modern identity to convey agility and confidence — from formula concept to market delivery — reinforcing the brand’s premium positioning.',
+        technologies: ['Figma', 'Illustrator', 'Photoshop'],
       },
     ],
   },
@@ -332,15 +404,19 @@ const pt = {
     subtitle: 'UI/UX Design | Desenvolvedor',
     back: '← voltar',
     tools: 'Ferramentas',
+    zoomHint: 'Clique na imagem para ampliar',
+    close: 'Fechar',
+    visitSite: 'Ver site',
+    note: 'Projetos paralelos que faço no meu tempo livre — atuo como Full Stack Developer na O Grupo Six.',
     projects: [
       {
         name: 'The Bliss Code',
         date: '02/2025',
         image: BlissCodeImage,
         description:
-          'Landing page no nicho de desenvolvimento pessoal. Estrutura de conteúdo clara, storytelling e identidade visual que transmite positividade e confiança.',
+          'Landing page vibrante e envolvente, com direção de cor e hierarquia visual alinhadas à proposta de transformação da marca.',
         descriptionFull:
-          'Neste projeto, trabalhei exclusivamente com UI/UX design. O objetivo era criar uma landing page clara e envolvente que transmitisse credibilidade e incentivasse a conversão. Estruturei o conteúdo com base em storytelling, hierarquia visual e uma identidade leve que reforça crescimento pessoal e positividade.',
+          'Atuei como UI/UX designer da landing page, traduzindo em interface a energia que a marca buscava transmitir. Trabalhei direção de cor, ritmo visual e hierarquia de conteúdo para construir uma página vibrante e envolvente, alinhada à proposta de transformação do produto.',
         technologies: ['Figma', 'After Effects', 'Photoshop'],
       },
       {
@@ -352,6 +428,68 @@ const pt = {
         descriptionFull:
           'Fui responsável pelo UI/UX design. O desafio era comunicar energia, confiança e ação. Criei uma identidade visual forte em preto e amarelo, organizei o conteúdo para facilitar a navegação e desenhei CTAs estratégicos para gerar conversões. O resultado é um layout responsivo e impactante.',
         technologies: ['Figma', 'After Effects', 'Photoshop'],
+      },
+      {
+        name: 'Cidade dos Meninos',
+        date: '05/2025',
+        image: CidadeDosMeninosImage,
+        description:
+          'Website institucional com UI/UX design focado em transmitir acolhimento e organizar a informação de forma clara e acessível.',
+        descriptionFull:
+          'Fui responsável pelo UI/UX design do site institucional. O foco foi construir uma identidade visual coerente e uma arquitetura de navegação que transmite acolhimento, priorizando hierarquia da informação e clareza. Cada seção foi estruturada para que o visitante encontre o que precisa com o mínimo de esforço, mantendo consistência visual do início ao fim.',
+        technologies: ['Figma', 'Illustrator', 'Photoshop'],
+      },
+      {
+        name: 'IA Chatbot',
+        date: '06/2025',
+        image: ChatbotImage,
+        description:
+          'Interface de chatbot inspirada em referências atuais de produtos de IA, adaptada à identidade visual da marca.',
+        descriptionFull:
+          'Desenhei a interface do chatbot com base nas melhores referências atuais de produtos de IA, adaptando os padrões visuais e de interação à identidade da marca. Priorizei uma experiência limpa, familiar e fluida — do onboarding até a conversa — para que o usuário se sentisse à vontade desde o primeiro contato.',
+        technologies: ['Figma', 'Illustrator'],
+      },
+      {
+        name: 'DAC',
+        date: '07/2025',
+        image: DacImage,
+        description:
+          'Landing page de um sistema de detecção de incêndios florestais por visão computacional, comunicando uma tecnologia complexa de forma clara.',
+        descriptionFull:
+          'Desenvolvi a landing page de um sistema de detecção de incêndios florestais baseado em visão computacional. O trabalho foi comunicar o objetivo do produto de forma clara e acessível, traduzindo uma tecnologia complexa em uma experiência fácil de compreender para qualquer visitante.',
+        technologies: ['Figma', 'Photoshop', 'Illustrator'],
+      },
+      {
+        name: 'YourHealthGuru',
+        date: '08/2025',
+        image: UpsellImage,
+        description:
+          'Página de oferta (upsell) estruturada para clareza e objetividade, reduzindo ruído na decisão de compra.',
+        descriptionFull:
+          'Estruturei a página de oferta com foco em clareza e objetividade, organizando as informações de forma direta para reduzir ruído no processo de decisão. Priorizei benefícios, prova social e chamada para ação em uma hierarquia que permite ao usuário entender o valor da oferta rapidamente.',
+        technologies: ['Figma', 'Photoshop'],
+      },
+      {
+        name: 'Healthy',
+        date: '09/2025',
+        image: VslImage,
+        link: 'https://desafio-ogruposix-matheuspancieri.vercel.app/',
+        description:
+          'Página de vídeo de vendas (VSL) com hook logo no início e hierarquia de conteúdo pensada para guiar a narrativa até a conversão.',
+        descriptionFull:
+          'Desenvolvi uma página de vídeo de vendas (VSL) buscando criar um gancho ("catch") logo nos primeiros segundos e melhorar o fluxo de leitura. Organizei a hierarquia e o ritmo do conteúdo para guiar o usuário naturalmente pela narrativa até a conversão.',
+        technologies: ['Figma', 'After Effects', 'Photoshop'],
+      },
+      {
+        name: 'Hexalog',
+        date: '10/2025',
+        image: HexalogImage,
+        link: 'https://hexalogfull.com/',
+        description:
+          'Landing page de uma indústria de formulação e produção, com estética escura, ousada e identidade premium.',
+        descriptionFull:
+          'Desenvolvi a landing page de uma indústria de formulação e produção de produtos, com estética escura, ousada e de alto impacto. Trabalhei uma identidade visual forte e moderna para transmitir agilidade e confiança — do conceito da fórmula à entrega no mercado —, reforçando o posicionamento premium da marca.',
+        technologies: ['Figma', 'Illustrator', 'Photoshop'],
       },
     ],
   },
