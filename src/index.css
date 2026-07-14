@@ -172,3 +172,15 @@ body {
 .app-zoom-in {
   animation: app-zoom-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+/* Toast: fades/rises in, holds, fades/drops out — single timed animation so
+   JS just unmounts on `animationend` instead of juggling two transitions. */
+@keyframes toast-inout {
+  0% { opacity: 0; transform: translate(-50%, 8px); }
+  12% { opacity: 1; transform: translate(-50%, 0); }
+  85% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, 8px); }
+}
+.toast-inout {
+  animation: toast-inout 1.8s ease-in-out forwards;
+}

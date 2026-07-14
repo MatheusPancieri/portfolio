@@ -18,6 +18,7 @@ const ContactApp = () => {
       name: z.string().min(1, e.nameRequired).min(2, e.nameMin),
       email: z.string().min(1, e.emailRequired).email(e.emailInvalid),
       message: z.string().min(1, e.messageRequired).min(10, e.messageMin),
+      consent: z.literal(true, e.consentRequired),
     });
   }, [c]);
 
@@ -110,6 +111,18 @@ const ContactApp = () => {
           />
           {errors.message && <span className={errorText}>{errors.message.message}</span>}
         </label>
+
+        <label className="flex items-start gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            className="mt-0.5 w-4 h-4 shrink-0 accent-accent-deep cursor-pointer"
+            {...register("consent")}
+          />
+          <span className="text-xs text-ink-soft font-inter leading-relaxed">
+            {c.contact.consent}
+          </span>
+        </label>
+        {errors.consent && <span className={errorText}>{errors.consent.message}</span>}
 
         {sendError && <span className={errorText}>{c.contact.errors.sendFailed}</span>}
 

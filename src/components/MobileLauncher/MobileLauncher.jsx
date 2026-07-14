@@ -5,13 +5,20 @@ import { APPS } from "../apps/apps.jsx";
 import { LaunchContext } from "../../context/LaunchContext.jsx";
 import Clock from "../Clock/Clock.jsx";
 import TaskbarPet from "../TaskbarPet/TaskbarPet.jsx";
+import Toast from "../Toast/Toast.jsx";
 
 const MobileLauncher = () => {
   const { c, lang, toggleLang } = useLang();
   const [activeId, setActiveId] = useState(null);
+  const [toast, setToast] = useState(null);
   const activeApp = APPS.find((a) => a.id === activeId);
 
   const launch = (app) => {
+    if (app.copyText) {
+      navigator.clipboard.writeText(app.copyText);
+      setToast({ id: Date.now(), text: app.toast(c) });
+      return;
+    }
     if (app.external) {
       window.open(app.external, "_blank", "noopener,noreferrer");
       return;
@@ -45,11 +52,9 @@ const MobileLauncher = () => {
             <button
               key={app.id}
               onClick={() => launch(app)}
-              className="flex flex-col items-center gap-2 cursor-pointer"
+              className="flex flex-col items-center gap-2 cursor-pointer active:translate-y-0.5 transition-transform"
             >
-              <span className="flex items-center justify-center w-16 h-16 bg-panel border-2 border-line rounded-2xl shadow-[3px_3px_0_0_rgba(59,51,37,0.85)] active:translate-y-0.5 active:shadow-[1px_1px_0_0_rgba(59,51,37,0.85)] transition-all">
-                <app.Icon className="w-8 h-8 text-ink" />
-              </span>
+              <app.Icon className="w-12 h-12 text-ink drop-shadow-[2px_2px_0_rgba(59,51,37,0.25)]" />
               <span className="text-xs font-anonymous text-ink">
                 {app.label(c)}
               </span>
@@ -78,6 +83,10 @@ const MobileLauncher = () => {
             <activeApp.Component />
           </div>
         </div>
+      )}
+
+      {toast && (
+        <Toast key={toast.id} message={toast.text} onDone={() => setToast(null)} />
       )}
     </div>
     </LaunchContext.Provider>

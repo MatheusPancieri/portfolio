@@ -29,7 +29,8 @@ src/
 ├── main.jsx                        # bootstrap React
 ├── App.jsx                         # BrowserRouter + Routes ("/" e "/old-version")
 ├── assets/
-│   ├── imgs/                       # fotos de projetos, logos, assinatura SVG
+│   ├── imgs/                       # logos, assinatura SVG
+│   │   └── projetos/<Nome>/        # mídia de cada projeto do works (ver seção própria)
 │   ├── icons/                      # ícones dos apps (webp)
 │   └── pet/                        # spritesheets do bichinho (4 PNGs)
 ├── context/                        # providers React (Context + hooks de consumo)
@@ -38,7 +39,8 @@ src/
 │   └── LaunchContext.jsx           # abstração "abrir app" (desktop e mobile)
 ├── utils/
 │   ├── content.js                  # TODO o texto do site em EN e PT + dados + LINKS
-│   └── useIconPositions.js         # hook: posições dos ícones do desktop (localStorage)
+│   ├── useIconPositions.js         # hook: posições dos ícones do desktop (localStorage)
+│   └── projectMedia.js             # glob dinâmico das pastas em assets/imgs/projetos/
 ├── components/                     # peças do "sistema operacional"
 │   ├── IconImg.jsx                 # factory: <img> webp → componente Icon
 │   ├── Desktop/Desktop.jsx         # shell desktop: grain, logo, ícones, janelas
@@ -54,7 +56,7 @@ src/
 │       ├── apps.jsx                # registro dos apps (ícone, tamanho, componente)
 │       ├── HomeApp.jsx             # home.mdx — intro estilo README + atalhos
 │       ├── AboutApp.jsx            # about.me — abas Bio/Experiência/Formação
-│       ├── WorksApp.jsx            # works — lista de projetos + detalhe (imagem com zoom via Lightbox)
+│       ├── WorksApp.jsx            # works — mini explorador de arquivos (ver seção própria)
 │       ├── ContactApp.jsx          # contact — formulário com Zod + react-hook-form + EmailJS
 │       └── ChessApp.jsx            # chess.com — xadrez completo (chess.js + sprites em src/assets/chess/)
 └── pages/
@@ -117,6 +119,40 @@ Tudo é definido em [src/index.css](src/index.css):
   de `c` (ex.: `c.about.tabs.bio`).
 - O botão EN/PT fica na taskbar; a escolha persiste em `localStorage["os-lang"]`.
   O relógio também muda de locale junto.
+
+## Works — mini explorador de arquivos
+
+[WorksApp.jsx](src/components/apps/WorksApp.jsx) simula um explorador de
+arquivos de verdade em vez de uma grade de cards: cada projeto é uma pasta
+(ícone `folder.webp`), que ao abrir mostra os arquivos dentro dela — um
+`Bio.txt` (ícone `notes.webp`) e a mídia do projeto. Três níveis, tudo
+dentro da mesma janela (sem abrir uma segunda janela do OS):
+
+1. **Raiz** (`works/`): grade de pastas, uma por `c.works.projects[i]`.
+2. **Pasta do projeto**: ícones de arquivo — `Bio.txt` + um ícone por item
+   em `getProjectMedia(project.folder)` (imagem = thumbnail real, vídeo =
+   ícone genérico com ▶, sem preview). Clicar numa mídia abre o
+   [Lightbox](src/components/Lightbox/Lightbox.jsx) direto; clicar no
+   `Bio.txt` entra no nível 3.
+3. **`Bio.txt`**: painel estilo bloco de notas (header com `notes.webp` +
+   nome do arquivo) mostrando nome/data do projeto, link "visitar site" (se
+   `project.link` existir), `descriptionFull`, chips de `technologies`, e a
+   mesma mídia da pasta em miniatura (clicável → Lightbox).
+
+Breadcrumb (`works / Projeto / Bio.txt`) navega pra trás; cada segmento
+clicável volta pro nível correspondente.
+
+**Mídia dinâmica** ([projectMedia.js](src/utils/projectMedia.js)): usa
+`import.meta.glob("../assets/imgs/projetos/*/*", { eager: true })` pra
+descobrir os arquivos de `assets/imgs/projetos/<NomeDoProjeto>/` em tempo de
+build. **Basta soltar uma imagem ou vídeo (mp4/webm/mov) numa dessas
+pastas e rodar o build de novo** — não precisa tocar em código. O nome da
+pasta tem que bater com o campo `folder` do projeto em `content.js` (hoje
+igual ao `name`, mas são campos separados de propósito, caso o nome de
+exibição precise mudar sem renomear a pasta no disco).
+
+O `descriptionFull` de cada projeto está sendo reaproveitado como o texto
+do `Bio.txt` — é um placeholder até vir o formato final do texto.
 
 ## Gerenciador de janelas
 
@@ -274,3 +310,12 @@ npm run lint     # eslint
   seletor de peça). Sem "desfazer lance" nem relógio.
 - O "Other" extra de OS que você marcou na enquete inicial nunca foi
   especificado — em aberto.
+- **`Bio.txt` do Works**: o texto exibido hoje é `descriptionFull` (o mesmo
+  texto técnico já usado antes) — placeholder até vir o formato final que
+  você quer pro `.txt`. Trocar é só editar `descriptionFull` em
+  `content.js` ou reescrever a seção "Bio.txt notepad view" do
+  [WorksApp.jsx](src/components/apps/WorksApp.jsx) se o formato mudar
+  estruturalmente (ex.: texto livre em vez de nome/data/link/tools/imagens).
+- **`notes.webp`**: virou o ícone do arquivo `Bio.txt` dentro da pasta de
+  cada projeto (não um app novo na área de trabalho). Se a ideia era um
+  app "Notas" separado clicável direto do desktop, isso ainda não existe.

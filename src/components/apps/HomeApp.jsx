@@ -47,6 +47,9 @@ const HomeApp = () => {
       <p className="mt-8 text-xs text-ink-soft italic font-inter">
         {c.home.footer}
       </p>
+      <p className="mt-1 text-xs text-ink-soft font-inter">
+        © {new Date().getFullYear()} {c.home.copyright}
+      </p>
     </div>
   );
 };

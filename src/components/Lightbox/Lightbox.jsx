@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Lightbox = ({ src, alt, closeLabel, onClose }) => {
+const Lightbox = ({ src, alt, type = "image", closeLabel, onClose }) => {
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
@@ -23,26 +23,36 @@ const Lightbox = ({ src, alt, closeLabel, onClose }) => {
       >
         ✕
       </button>
-      <div
-        className={
-          zoomed
-            ? "relative w-full h-full overflow-auto os-scroll"
-            : "relative max-w-[92vw] max-h-[88vh]"
-        }
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
+      {type === "video" ? (
+        <video
           src={src}
-          alt={alt}
-          draggable={false}
-          onClick={() => setZoomed((z) => !z)}
+          controls
+          autoPlay
+          onClick={(e) => e.stopPropagation()}
+          className="max-w-[92vw] max-h-[88vh] border-2 border-line shadow-[8px_8px_0_0_rgba(59,51,37,0.5)]"
+        />
+      ) : (
+        <div
           className={
             zoomed
-              ? "max-w-none border-2 border-line cursor-zoom-out"
-              : "block mx-auto max-w-[92vw] max-h-[88vh] w-auto h-auto object-contain border-2 border-line shadow-[8px_8px_0_0_rgba(59,51,37,0.5)] cursor-zoom-in"
+              ? "relative w-full h-full overflow-auto os-scroll"
+              : "relative max-w-[92vw] max-h-[88vh]"
           }
-        />
-      </div>
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={src}
+            alt={alt}
+            draggable={false}
+            onClick={() => setZoomed((z) => !z)}
+            className={
+              zoomed
+                ? "max-w-none border-2 border-line cursor-zoom-out"
+                : "block mx-auto max-w-[92vw] max-h-[88vh] w-auto h-auto object-contain border-2 border-line shadow-[8px_8px_0_0_rgba(59,51,37,0.5)] cursor-zoom-in"
+            }
+          />
+        </div>
+      )}
     </div>
   );
 };

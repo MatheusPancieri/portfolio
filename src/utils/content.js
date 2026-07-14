@@ -1,18 +1,10 @@
-import BlissCodeImage from '../assets/imgs/theblisscode-show.webp';
-import AkademiaImage from '../assets/imgs/akademia-show.webp';
-import CidadeDosMeninosImage from '../assets/imgs/cidadedosmeninos-show.webp';
-import ChatbotImage from '../assets/imgs/chatbot-show.webp';
-import DacImage from '../assets/imgs/dac-show.webp';
-import UpsellImage from '../assets/imgs/upsell-show.webp';
-import VslImage from '../assets/imgs/vsl-show.webp';
-import HexalogImage from '../assets/imgs/hexalog-show.webp';
 import Fiems from '../assets/imgs/logo-fiems.webp';
 import GrupoSix from '../assets/imgs/logo-gruposix.webp';
 import Alvorada from '../assets/imgs/logo-alvorada.webp';
 
 export const LINKS = {
   github: 'https://github.com/MatheusPancieri',
-  discord: 'https://discord.com/users/mmmmmmmm4401',
+  discordUsername: 'mmmmmmmm4401',
   linkedin:
     'https://www.linkedin.com/in/matheus-pancieri-preza-da-silva-159923275/',
   email: 'matheuspancieri@outlook.com',
@@ -35,6 +27,9 @@ const en = {
   taskbar: {
     petTitle: 'Feed me clicks',
   },
+  toast: {
+    discordCopied: 'Username copied!',
+  },
   window: { close: 'Close', minimize: 'Minimize', maximize: 'Maximize' },
   home: {
     title: 'home.mdx',
@@ -49,13 +44,14 @@ const en = {
       contact: 'Send me a message',
     },
     footer: 'PS: the pet in the taskbar likes to be clicked.',
+    copyright: 'Matheus Pancieri. All rights reserved.',
   },
   about: {
     title: 'about.me',
     name: 'Matheus Pancieri Preza da Silva',
     age: '21y',
     tabs: { bio: 'Bio', work: 'Experience', education: 'Education' },
-    bio: "I'm a Computer Engineering student from Brazil, based in Campo Grande, with experience in web development using .NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS, Tailwind and UI/UX Design. I also design user interfaces in Figma, aiming for clean, responsive, and user-friendly layouts.",
+    bio: "I'm a Computer Engineering student from Brazil, based in Aracaju, with experience in web development using .NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS, Tailwind and UI/UX Design. I also design user interfaces in Figma, aiming for clean, responsive, and user-friendly layouts.",
     experiences: [
       {
         title: 'Fullstack Developer - GrupoSix',
@@ -151,11 +147,13 @@ const en = {
     close: 'Close',
     visitSite: 'Visit site',
     note: 'This is just some of my side projects that i take on in my free time, my main role is Full Stack Developer at O Grupo Six.',
+    bioFile: 'Bio.txt',
+    media: 'Images',
     projects: [
       {
         name: 'The Bliss Code',
         date: '02/2025',
-        image: BlissCodeImage,
+        folder: 'The Bliss Code',
         description:
           'Vibrant, engaging landing page with color direction and visual hierarchy aligned to the brand’s transformation-focused positioning.',
         descriptionFull:
@@ -165,7 +163,7 @@ const en = {
       {
         name: 'Akademia',
         date: '04/2025',
-        image: AkademiaImage,
+        folder: 'Akademia',
         description:
           'Fitness website focused on attracting new members, with a bold black-and-yellow identity and strategic CTAs.',
         descriptionFull:
@@ -175,7 +173,7 @@ const en = {
       {
         name: 'Cidade dos Meninos',
         date: '05/2025',
-        image: CidadeDosMeninosImage,
+        folder: 'Cidade dos Meninos',
         description:
           'Institutional website with UI/UX design focused on conveying warmth and organizing information clearly and accessibly.',
         descriptionFull:
@@ -185,7 +183,7 @@ const en = {
       {
         name: 'IA Chatbot',
         date: '06/2025',
-        image: ChatbotImage,
+        folder: 'IA Chatbot',
         description:
           'Chatbot interface inspired by current AI product references, adapted to the brand’s visual identity.',
         descriptionFull:
@@ -195,7 +193,7 @@ const en = {
       {
         name: 'DAC',
         date: '07/2025',
-        image: DacImage,
+        folder: 'DAC',
         description:
           'Landing page for a computer-vision forest fire detection system, communicating complex technology clearly.',
         descriptionFull:
@@ -205,7 +203,7 @@ const en = {
       {
         name: 'YourHealthGuru',
         date: '08/2025',
-        image: UpsellImage,
+        folder: 'YourHealthGuru',
         description:
           'Upsell offer page structured for clarity and objectivity, reducing friction in the purchase decision.',
         descriptionFull:
@@ -215,7 +213,7 @@ const en = {
       {
         name: 'Healthy',
         date: '09/2025',
-        image: VslImage,
+        folder: 'Healthy',
         link: 'https://desafio-ogruposix-matheuspancieri.vercel.app/',
         description:
           'Video sales letter (VSL) page with an early hook and content hierarchy built to guide the narrative toward conversion.',
@@ -226,12 +224,12 @@ const en = {
       {
         name: 'Hexalog',
         date: '10/2025',
-        image: HexalogImage,
+        folder: 'Hexalog',
         link: 'https://hexalogfull.com/',
         description:
           'Landing page for a formulation and manufacturing company, with a bold, dark, high-impact aesthetic.',
         descriptionFull:
-          'I designed the landing page for a product formulation and manufacturing company, with a bold, dark, high-impact aesthetic. I built a strong, modern identity to convey agility and confidence — from formula concept to market delivery — reinforcing the brand’s premium positioning.',
+          'I designed and coded the landing page for a product formulation and manufacturing company, with a bold, dark, high-impact aesthetic. I built a strong, modern identity to convey agility and confidence, from formula concept to market delivery, reinforcing the brand’s premium positioning.',
         technologies: ['Figma', 'Illustrator', 'Photoshop'],
       },
     ],
@@ -247,6 +245,8 @@ const en = {
     success: 'Message sent!',
     successNote: "I'll get back to you soon.",
     directly: 'Or email me directly:',
+    consent:
+      'I agree that my data (name, email and message) will be used only to reply to this contact, in accordance with the LGPD.',
     errors: {
       nameRequired: 'Please enter your name',
       nameMin: 'Name must be at least 2 characters',
@@ -254,6 +254,7 @@ const en = {
       emailInvalid: "That doesn't look like a valid email",
       messageRequired: 'Please enter a message',
       messageMin: 'Message must be at least 10 characters',
+      consentRequired: 'You need to agree before sending',
       sendFailed:
         'Something went wrong. Please try again or email me directly.',
     },
@@ -293,13 +294,16 @@ const pt = {
   taskbar: {
     petTitle: 'Me alimente com cliques',
   },
+  toast: {
+    discordCopied: 'Nome copiado!',
+  },
   window: { close: 'Fechar', minimize: 'Minimizar', maximize: 'Maximizar' },
   home: {
     title: 'home.mdx',
     greeting: 'Olá, eu sou Matheus Pancieri',
     role: 'Desenvolvedor de Software · UI/UX Designer',
     intro:
-      'Bem-vindo ao meu desktop. Tudo aqui funciona como um pequeno sistema operacional — abra os apps para me conhecer melhor.',
+      'Bem-vindo ao meu desktop. Tudo aqui funciona como um pequeno sistema operacional, fique à vontade para abrir os apps e me conhecer melhor :)',
     shortcutsTitle: 'Comece por aqui',
     shortcuts: {
       about: 'Quem eu sou, experiência e formação',
@@ -307,13 +311,14 @@ const pt = {
       contact: 'Me mande uma mensagem',
     },
     footer: 'PS: o bichinho na barra de tarefas gosta de cliques.',
+    copyright: 'Matheus Pancieri. Todos os direitos reservados.',
   },
   about: {
     title: 'sobre.mim',
-    name: 'Matheus Pancieri',
-    age: '20 anos',
+    name: 'Matheus Pancieri Preza da Silva',
+    age: '21y',
     tabs: { bio: 'Bio', work: 'Experiência', education: 'Formação' },
-    bio: 'Sou estudante de Engenharia da Computação no Brasil, em Campo Grande, com experiência em desenvolvimento web usando .NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS e Tailwind. Também crio interfaces no Figma, buscando layouts limpos, responsivos e amigáveis.',
+    bio: 'Sou estudante de Engenharia da Computação no Brasil, em Aracaju, com experiência em desenvolvimento web usando .NET, ASP.NET, EF Core, SQL, JavaScript, jQuery, HTML/CSS e Tailwind. Também crio interfaces no Figma, buscando layouts limpos, responsivos e amigáveis.',
     experiences: [
       {
         title: 'Desenvolvedor Fullstack – GrupoSix',
@@ -407,12 +412,14 @@ const pt = {
     zoomHint: 'Clique na imagem para ampliar',
     close: 'Fechar',
     visitSite: 'Ver site',
-    note: 'Projetos paralelos que faço no meu tempo livre — atuo como Full Stack Developer na O Grupo Six.',
+    note: 'Esses sao alguns projetos paralelos que faço no meu tempo livre, atualmente atuo como Full Stack Developer na O Grupo Six.',
+    bioFile: 'Bio.txt',
+    media: 'Imagens',
     projects: [
       {
         name: 'The Bliss Code',
         date: '02/2025',
-        image: BlissCodeImage,
+        folder: 'The Bliss Code',
         description:
           'Landing page vibrante e envolvente, com direção de cor e hierarquia visual alinhadas à proposta de transformação da marca.',
         descriptionFull:
@@ -422,7 +429,7 @@ const pt = {
       {
         name: 'Akademia',
         date: '04/2025',
-        image: AkademiaImage,
+        folder: 'Akademia',
         description:
           'Site fitness focado em atrair novos alunos, com identidade marcante em preto e amarelo e CTAs estratégicos.',
         descriptionFull:
@@ -432,7 +439,7 @@ const pt = {
       {
         name: 'Cidade dos Meninos',
         date: '05/2025',
-        image: CidadeDosMeninosImage,
+        folder: 'Cidade dos Meninos',
         description:
           'Website institucional com UI/UX design focado em transmitir acolhimento e organizar a informação de forma clara e acessível.',
         descriptionFull:
@@ -442,7 +449,7 @@ const pt = {
       {
         name: 'IA Chatbot',
         date: '06/2025',
-        image: ChatbotImage,
+        folder: 'IA Chatbot',
         description:
           'Interface de chatbot inspirada em referências atuais de produtos de IA, adaptada à identidade visual da marca.',
         descriptionFull:
@@ -452,7 +459,7 @@ const pt = {
       {
         name: 'DAC',
         date: '07/2025',
-        image: DacImage,
+        folder: 'DAC',
         description:
           'Landing page de um sistema de detecção de incêndios florestais por visão computacional, comunicando uma tecnologia complexa de forma clara.',
         descriptionFull:
@@ -462,7 +469,7 @@ const pt = {
       {
         name: 'YourHealthGuru',
         date: '08/2025',
-        image: UpsellImage,
+        folder: 'YourHealthGuru',
         description:
           'Página de oferta (upsell) estruturada para clareza e objetividade, reduzindo ruído na decisão de compra.',
         descriptionFull:
@@ -472,7 +479,7 @@ const pt = {
       {
         name: 'Healthy',
         date: '09/2025',
-        image: VslImage,
+        folder: 'Healthy',
         link: 'https://desafio-ogruposix-matheuspancieri.vercel.app/',
         description:
           'Página de vídeo de vendas (VSL) com hook logo no início e hierarquia de conteúdo pensada para guiar a narrativa até a conversão.',
@@ -483,7 +490,7 @@ const pt = {
       {
         name: 'Hexalog',
         date: '10/2025',
-        image: HexalogImage,
+        folder: 'Hexalog',
         link: 'https://hexalogfull.com/',
         description:
           'Landing page de uma indústria de formulação e produção, com estética escura, ousada e identidade premium.',
@@ -504,6 +511,8 @@ const pt = {
     success: 'Mensagem enviada!',
     successNote: 'Logo entro em contato.',
     directly: 'Ou me mande um email direto:',
+    consent:
+      'Concordo que meus dados (nome, email e mensagem) serão usados apenas para responder este contato, conforme a LGPD.',
     errors: {
       nameRequired: 'Digite seu nome',
       nameMin: 'O nome precisa ter no mínimo 2 caracteres',
@@ -511,6 +520,7 @@ const pt = {
       emailInvalid: 'Esse email não parece válido',
       messageRequired: 'Digite uma mensagem',
       messageMin: 'A mensagem precisa ter no mínimo 10 caracteres',
+      consentRequired: 'Você precisa concordar antes de enviar',
       sendFailed:
         'Algo deu errado. Tente novamente ou me mande um email direto.',
     },

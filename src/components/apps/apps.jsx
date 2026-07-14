@@ -5,7 +5,7 @@ import ContactApp from "./ContactApp.jsx";
 import ChessApp from "./ChessApp.jsx";
 import { LINKS } from "../../utils/content.js";
 import IconImg from "../IconImg.jsx";
-import notesIcon from "../../assets/icons/notes.webp";
+import questionBookIcon from "../../assets/icons/question-book.webp";
 import personIcon from "../../assets/icons/person.webp";
 import folderIcon from "../../assets/icons/folder.webp";
 import writeMachineIcon from "../../assets/icons/write-machine.webp";
@@ -18,7 +18,7 @@ export const APPS = [
   {
     id: "home",
     label: (c) => c.desktop.apps.home,
-    Icon: IconImg(notesIcon),
+    Icon: IconImg(questionBookIcon),
     Component: HomeApp,
     w: 520,
     h: 560,
@@ -57,7 +57,8 @@ export const APPS = [
     id: "discord",
     label: (c) => c.desktop.apps.discord,
     Icon: IconImg(discordIcon),
-    external: LINKS.discord,
+    copyText: LINKS.discordUsername,
+    toast: (c) => c.toast.discordCopied,
   },
   {
     id: "linkedin",
