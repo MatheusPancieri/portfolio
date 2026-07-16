@@ -13,7 +13,8 @@ import signature from "../../assets/imgs/assinaturaMatheus.svg";
 const Desktop = () => {
   const { c } = useLang();
   const { windows, open } = useWindows();
-  const { positions, move } = useIconPositions(APPS);
+  const visibleApps = APPS.filter((app) => !app.hidden);
+  const { positions, move } = useIconPositions(visibleApps);
   const [toast, setToast] = useState(null);
 
   const launch = (app, rect) => {
@@ -43,7 +44,7 @@ const Desktop = () => {
       />
 
       {/* Icons */}
-      {APPS.map((app) => (
+      {visibleApps.map((app) => (
         <DesktopIcon
           key={app.id}
           app={app}

@@ -48,7 +48,7 @@ const MobileLauncher = () => {
       {/* Home screen grid */}
       <div className="relative flex-1 overflow-y-auto os-scroll p-8">
         <div className="grid grid-cols-3 gap-x-4 gap-y-8 justify-items-center max-w-sm mx-auto">
-          {APPS.map((app) => (
+          {APPS.filter((app) => !app.hidden).map((app) => (
             <button
               key={app.id}
               onClick={() => launch(app)}

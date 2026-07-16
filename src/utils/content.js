@@ -22,6 +22,7 @@ const en = {
       discord: 'discord',
       linkedin: 'linkedin',
       chess: 'chess.com',
+      notes: 'notes.exe',
     },
   },
   taskbar: {
@@ -143,13 +144,30 @@ const en = {
     subtitle: 'UI/UX Design | Developer',
     back: '← back',
     tools: 'Tools',
-    zoomHint: 'Click image to zoom',
-    close: 'Close',
     visitSite: 'Visit site',
     note: 'This is just some of my side projects that i take on in my free time, my main role is Full Stack Developer at O Grupo Six.',
     bioFile: 'Bio.txt',
-    media: 'Images',
+    empty: 'Open a project in works/ to read its notes.',
     projects: [
+      {
+        name: 'Adastra',
+        date: '2025 – Present',
+        folder: 'Adastra',
+        coverBare: true,
+        link: 'https://adastravisuals.art',
+        description:
+          'My own project — a platform for an anime-editing community, plus a companion desktop app to source content.',
+        descriptionFull:
+          'Full-stack platform built for a video-editing community. Built with Next.js 15 (App Router), Tailwind CSS and Framer Motion, with Discord OAuth2 login (NextAuth.js) and Cloudflare KV storing member data. Features a searchable precut bank, a commission request flow, an application pipeline for new editors, a public roster of community members, and a Stripe-based membership system currently in progress.',
+        technologies: [
+          'Next.js',
+          'React',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Discord OAuth',
+          'Python',
+        ],
+      },
       {
         name: 'The Bliss Code',
         date: '02/2025',
@@ -195,10 +213,10 @@ const en = {
         date: '07/2025',
         folder: 'DAC',
         description:
-          'Landing page for a computer-vision forest fire detection system, communicating complex technology clearly.',
+          'Landing page for a computer-vision forest fire detection system — I designed the UI/UX and helped build the detection feature itself.',
         descriptionFull:
-          'I designed the landing page for a computer-vision-based forest fire detection system. The goal was to communicate the product clearly and accessibly, translating complex technology into an experience any visitor can easily understand.',
-        technologies: ['Figma', 'Photoshop', 'Illustrator'],
+          'I designed the UI/UX for the landing page and also worked on part of the site’s functionality, including a computer-vision AI, built in Python, that detects forest fires from photos. The goal was to communicate the product clearly and accessibly, translating complex technology into an experience any visitor can easily understand.',
+        technologies: ['Figma', 'Photoshop', 'Illustrator', 'Python'],
       },
       {
         name: 'YourHealthGuru',
@@ -216,10 +234,17 @@ const en = {
         folder: 'Healthy',
         link: 'https://desafio-ogruposix-matheuspancieri.vercel.app/',
         description:
-          'Video sales letter (VSL) page with an early hook and content hierarchy built to guide the narrative toward conversion.',
+          'Complete VSL sales funnel, front to back — from the hook video straight through to the offer and checkout.',
         descriptionFull:
-          'I built a video sales letter (VSL) page focused on creating a strong hook right from the start and improving reading flow. I organized content hierarchy and pacing to naturally guide users through the narrative toward conversion.',
-        technologies: ['Figma', 'After Effects', 'Photoshop'],
+          'I built a complete VSL sales funnel, from the video hook page through to the offer and checkout, covering both front-end and back-end. I focused on creating a strong hook right from the start and improving reading flow, organizing content hierarchy and pacing to naturally guide users through the narrative toward conversion — and handled the technical build end-to-end with React, JavaScript, and Node.js.',
+        technologies: [
+          'React',
+          'JavaScript',
+          'Node.js',
+          'Figma',
+          'After Effects',
+          'Photoshop',
+        ],
       },
       {
         name: 'Hexalog',
@@ -229,8 +254,8 @@ const en = {
         description:
           'Landing page for a formulation and manufacturing company, with a bold, dark, high-impact aesthetic.',
         descriptionFull:
-          'I designed and coded the landing page for a product formulation and manufacturing company, with a bold, dark, high-impact aesthetic. I built a strong, modern identity to convey agility and confidence, from formula concept to market delivery, reinforcing the brand’s premium positioning.',
-        technologies: ['Figma', 'Illustrator', 'Photoshop'],
+          'I designed and fully built the landing page in React for a product formulation and manufacturing company, with a bold, dark, high-impact aesthetic. I built a strong, modern identity to convey agility and confidence, from formula concept to market delivery, reinforcing the brand’s premium positioning.',
+        technologies: ['React', 'Figma', 'Illustrator', 'Photoshop'],
       },
     ],
   },
@@ -275,6 +300,9 @@ const en = {
   mobile: {
     close: 'Close',
   },
+  notepad: {
+    placeholder: 'Type something...',
+  },
 };
 
 const pt = {
@@ -289,6 +317,7 @@ const pt = {
       discord: 'discord',
       linkedin: 'linkedin',
       chess: 'chess.com',
+      notes: 'notes.exe',
     },
   },
   taskbar: {
@@ -409,22 +438,29 @@ const pt = {
     subtitle: 'UI/UX Design | Desenvolvedor',
     back: '← voltar',
     tools: 'Ferramentas',
-    zoomHint: 'Clique na imagem para ampliar',
-    close: 'Fechar',
     visitSite: 'Ver site',
     note: 'Esses sao alguns projetos paralelos que faço no meu tempo livre, atualmente atuo como Full Stack Developer na O Grupo Six.',
     bioFile: 'Bio.txt',
-    media: 'Imagens',
+    empty: 'Abra um projeto em trabalhos/ para ler as notas.',
     projects: [
       {
-        name: 'The Bliss Code',
-        date: '02/2025',
-        folder: 'The Bliss Code',
+        name: 'Adastra',
+        date: '2025 – Atual',
+        folder: 'Adastra',
+        coverBare: true,
+        link: 'https://adastravisuals.art',
         description:
-          'Landing page vibrante e envolvente, com direção de cor e hierarquia visual alinhadas à proposta de transformação da marca.',
+          'Projeto próprio — uma plataforma para uma comunidade de edição de anime, além de um app desktop complementar para buscar conteúdo.',
         descriptionFull:
-          'Atuei como UI/UX designer da landing page, traduzindo em interface a energia que a marca buscava transmitir. Trabalhei direção de cor, ritmo visual e hierarquia de conteúdo para construir uma página vibrante e envolvente, alinhada à proposta de transformação do produto.',
-        technologies: ['Figma', 'After Effects', 'Photoshop'],
+          'Plataforma full-stack construída para uma comunidade de edição de vídeo. Desenvolvida com Next.js 15 (App Router), Tailwind CSS e Framer Motion, com login via OAuth2 do Discord (NextAuth.js) e Cloudflare KV armazenando os dados dos membros. Conta com banco de precuts pesquisável, fluxo de solicitação de comissões, pipeline de aplicação para novos editores, roster público dos membros da comunidade e um sistema de membership via Stripe atualmente em desenvolvimento.',
+        technologies: [
+          'Next.js',
+          'React',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Discord OAuth',
+          'Python',
+        ],
       },
       {
         name: 'Akademia',
@@ -461,10 +497,10 @@ const pt = {
         date: '07/2025',
         folder: 'DAC',
         description:
-          'Landing page de um sistema de detecção de incêndios florestais por visão computacional, comunicando uma tecnologia complexa de forma clara.',
+          'Landing page de um sistema de detecção de incêndios florestais por visão computacional — cuidei do UI/UX e também ajudei a construir a funcionalidade de detecção.',
         descriptionFull:
-          'Desenvolvi a landing page de um sistema de detecção de incêndios florestais baseado em visão computacional. O trabalho foi comunicar o objetivo do produto de forma clara e acessível, traduzindo uma tecnologia complexa em uma experiência fácil de compreender para qualquer visitante.',
-        technologies: ['Figma', 'Photoshop', 'Illustrator'],
+          'Cuidei do UI/UX da landing page e também trabalhei em parte da funcionalidade do site, incluindo uma IA de visão computacional, feita em Python, que detecta incêndios florestais a partir de fotos. O trabalho foi comunicar o objetivo do produto de forma clara e acessível, traduzindo uma tecnologia complexa em uma experiência fácil de compreender para qualquer visitante.',
+        technologies: ['Figma', 'Photoshop', 'Illustrator', 'Python'],
       },
       {
         name: 'YourHealthGuru',
@@ -482,10 +518,17 @@ const pt = {
         folder: 'Healthy',
         link: 'https://desafio-ogruposix-matheuspancieri.vercel.app/',
         description:
-          'Página de vídeo de vendas (VSL) com hook logo no início e hierarquia de conteúdo pensada para guiar a narrativa até a conversão.',
+          'Funil de vendas completo (VSL), do front ao back — do vídeo gancho até a página de oferta e checkout.',
         descriptionFull:
-          'Desenvolvi uma página de vídeo de vendas (VSL) buscando criar um gancho ("catch") logo nos primeiros segundos e melhorar o fluxo de leitura. Organizei a hierarquia e o ritmo do conteúdo para guiar o usuário naturalmente pela narrativa até a conversão.',
-        technologies: ['Figma', 'After Effects', 'Photoshop'],
+          'Desenvolvi um funil de vendas completo em formato VSL, do vídeo gancho até a página de oferta e checkout, cobrindo front-end e back-end. Busquei criar um gancho ("catch") logo nos primeiros segundos e melhorar o fluxo de leitura, organizando a hierarquia e o ritmo do conteúdo para guiar o usuário naturalmente pela narrativa até a conversão — e cuidei da construção técnica de ponta a ponta com React, JavaScript e Node.js.',
+        technologies: [
+          'React',
+          'JavaScript',
+          'Node.js',
+          'Figma',
+          'After Effects',
+          'Photoshop',
+        ],
       },
       {
         name: 'Hexalog',
@@ -495,8 +538,8 @@ const pt = {
         description:
           'Landing page de uma indústria de formulação e produção, com estética escura, ousada e identidade premium.',
         descriptionFull:
-          'Desenvolvi a landing page de uma indústria de formulação e produção de produtos, com estética escura, ousada e de alto impacto. Trabalhei uma identidade visual forte e moderna para transmitir agilidade e confiança — do conceito da fórmula à entrega no mercado —, reforçando o posicionamento premium da marca.',
-        technologies: ['Figma', 'Illustrator', 'Photoshop'],
+          'Desenvolvi a landing page inteira em React de uma indústria de formulação e produção de produtos, com estética escura, ousada e de alto impacto. Trabalhei uma identidade visual forte e moderna para transmitir agilidade e confiança — do conceito da fórmula à entrega no mercado —, reforçando o posicionamento premium da marca.',
+        technologies: ['React', 'Figma', 'Illustrator', 'Photoshop'],
       },
     ],
   },
@@ -540,6 +583,9 @@ const pt = {
   },
   mobile: {
     close: 'Fechar',
+  },
+  notepad: {
+    placeholder: 'Escreva alguma coisa...',
   },
 };
 

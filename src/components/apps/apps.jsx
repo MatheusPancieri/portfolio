@@ -1,6 +1,8 @@
 import HomeApp from "./HomeApp.jsx";
 import AboutApp from "./AboutApp.jsx";
 import WorksApp from "./WorksApp.jsx";
+import ProjectNotesApp from "./ProjectNotesApp.jsx";
+import NotepadApp from "./NotepadApp.jsx";
 import ContactApp from "./ContactApp.jsx";
 import ChessApp from "./ChessApp.jsx";
 import { LINKS } from "../../utils/content.js";
@@ -8,6 +10,7 @@ import IconImg from "../IconImg.jsx";
 import questionBookIcon from "../../assets/icons/question-book.webp";
 import personIcon from "../../assets/icons/person.webp";
 import folderIcon from "../../assets/icons/folder.webp";
+import notesIcon from "../../assets/icons/notes.webp";
 import writeMachineIcon from "../../assets/icons/write-machine.webp";
 import githubIcon from "../../assets/icons/github.webp";
 import discordIcon from "../../assets/icons/discord.webp";
@@ -38,6 +41,23 @@ export const APPS = [
     Component: WorksApp,
     w: 760,
     h: 580,
+  },
+  {
+    id: "project-notes",
+    label: (c) => c.works.bioFile,
+    Icon: IconImg(notesIcon),
+    Component: ProjectNotesApp,
+    w: 600,
+    h: 620,
+    hidden: true,
+  },
+  {
+    id: "notes",
+    label: (c) => c.desktop.apps.notes,
+    Icon: IconImg(notesIcon),
+    Component: NotepadApp,
+    w: 480,
+    h: 520,
   },
   {
     id: "contact",

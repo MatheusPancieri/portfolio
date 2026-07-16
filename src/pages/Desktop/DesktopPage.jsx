@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LangProvider } from "../../context/i18n.jsx";
 import { WindowsProvider } from "../../context/WindowManager.jsx";
+import { NotesProvider } from "../../context/NotesContext.jsx";
 import BootScreen from "../../components/BootScreen/BootScreen.jsx";
 import Desktop from "../../components/Desktop/Desktop.jsx";
 import MobileLauncher from "../../components/MobileLauncher/MobileLauncher.jsx";
@@ -27,10 +28,12 @@ const DesktopPage = () => {
   return (
     <LangProvider>
       <WindowsProvider>
-        <div>
-          {isMobile ? <MobileLauncher /> : <Desktop />}
-          {!booted && <BootScreen onDone={finishBoot} />}
-        </div>
+        <NotesProvider>
+          <div>
+            {isMobile ? <MobileLauncher /> : <Desktop />}
+            {!booted && <BootScreen onDone={finishBoot} />}
+          </div>
+        </NotesProvider>
       </WindowsProvider>
     </LangProvider>
   );
