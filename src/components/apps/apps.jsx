@@ -21,17 +21,16 @@ import linkedinIcon from "../../assets/icons/linkedin.webp";
 import chessIcon from "../../assets/icons/chess.webp";
 
 // Desktop apps per profile (null = every visible app not marked `only` for
-// another profile). The editor profile keeps it minimal: its works live on
-// the desktop itself (WorksCarousel).
-const PROFILE_APPS = { dev: null, editor: ["about", "ytjobs", "discord"] };
+// another profile). A list also sets the order, on the desktop and the
+// mobile grid. The editor profile keeps it minimal: its works live on the
+// desktop itself (WorksCarousel).
+const PROFILE_APPS = { dev: null, editor: ["discord", "about", "ytjobs"] };
 
-export const desktopApps = (profile) =>
-  APPS.filter(
-    (a) =>
-      !a.hidden &&
-      (!a.only || a.only === profile) &&
-      (!PROFILE_APPS[profile] || PROFILE_APPS[profile].includes(a.id)),
-  );
+export const desktopApps = (profile) => {
+  const visible = APPS.filter((a) => !a.hidden && (!a.only || a.only === profile));
+  const list = PROFILE_APPS[profile];
+  return list ? list.map((id) => visible.find((a) => a.id === id)).filter(Boolean) : visible;
+};
 
 // HomeApp and WorksApp import APPS back from this file, so their Component
 // is read through a getter (at render time) rather than while this module

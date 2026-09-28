@@ -37,6 +37,11 @@ export function indexToCell(index, rows) {
   return { col: Math.floor(index / rows), row: index % rows };
 }
 
+// Row-major: fills the top row left-to-right first.
+export function indexToCellByRow(index, cols) {
+  return { col: index % cols, row: Math.floor(index / cols) };
+}
+
 const cellKey = (col, row) => `${col},${row}`;
 
 // Spiral search outward (ring by ring) from (col, row) for the closest cell

@@ -6,6 +6,7 @@ import {
   cellOfPosition,
   snapToGrid,
   indexToCell,
+  indexToCellByRow,
   nearestFreeCell,
 } from "./desktopGrid.js";
 
@@ -43,7 +44,8 @@ export function useIconPositions(apps, profile) {
         const snapped = snapToGrid(stored[app.id].x, stored[app.id].y, w, h);
         ({ col, row } = cellOfPosition(snapped.x, snapped.y));
       } else {
-        ({ col, row } = indexToCell(i, rows));
+        // Editor: a single row across the top, clear of the works strip.
+        ({ col, row } = profile === "editor" ? indexToCellByRow(i, cols) : indexToCell(i, rows));
       }
       const free = nearestFreeCell(col, row, occupied, cols, rows) ?? { col, row };
       occupied.add(`${free.col},${free.row}`);

@@ -19,7 +19,7 @@ export const EDITOR_LINKS = {
   youtube: '',
   instagram: '',
   // YT Jobs profile — the ytjobs.co app on the editor desktop.
-  ytjobs: '',
+  ytjobs: 'https://ytjobs.co/talent/profile/633182',
   devPortfolio: 'https://matheuspancieri.dev',
 };
 
