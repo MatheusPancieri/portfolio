@@ -108,7 +108,7 @@ const en = {
   about: {
     title: 'About',
     body: [
-      'I am Matheus, a video editor and developer from Brazil. I started editing by building my own workflow around Premiere Pro.',
+      'I am Matheus, a video editor and developer from Brazil with 6+ years of editing experience. I started editing as a hobby, and now I am making it my career.',
       'Today I edit narration-driven long-form videos, source and place documentary b-roll, design transitions and sound, and cut vertical versions for social.',
     ],
     servicesTitle: 'What I do',
@@ -170,7 +170,7 @@ const pt = {
   about: {
     title: 'Sobre',
     body: [
-      'Sou o Matheus, editor de vídeo e desenvolvedor. Comecei a editar montando meu próprio fluxo no Premiere Pro.',
+      'Sou o Matheus, editor de vídeo e desenvolvedor, com mais de 6 anos de experiência em edição. Comecei editando por hobby e hoje quero seguir carreira nisso.',
       'Hoje edito vídeos long-form guiados por narração, pesquiso e posiciono b-roll documental, faço transições e sound design, e corto versões verticais pras redes.',
     ],
     servicesTitle: 'O que eu faço',
