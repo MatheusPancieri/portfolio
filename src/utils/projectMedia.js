@@ -25,3 +25,19 @@ Object.values(media).forEach((list) =>
 );
 
 export const getProjectMedia = (folder) => media[folder] ?? [];
+
+// Works banners (editor profile): src/assets/imgs/banners/<project id>.webp,
+// e.g. banners/mcdonalds.webp. Without one, the carousel falls back to the
+// video's own thumbnail.
+const bannerModules = import.meta.glob("../assets/imgs/banners/*", {
+  eager: true,
+  import: "default",
+});
+
+const banners = {};
+for (const path in bannerModules) {
+  const id = path.match(/banners\/([^/]+)\.[^./]+$/)?.[1];
+  if (id) banners[id] = bannerModules[path];
+}
+
+export const getBanner = (id) => banners[id] ?? null;

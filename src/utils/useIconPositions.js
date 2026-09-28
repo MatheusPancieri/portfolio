@@ -9,11 +9,12 @@ import {
   nearestFreeCell,
 } from "./desktopGrid.js";
 
-const STORAGE_KEY = "os-icon-positions";
+// One layout per profile; dev keeps the original key so saved layouts survive.
+const storageKey = (profile) => (profile === "editor" ? "os-icon-positions-editor" : "os-icon-positions");
 
-function loadStored() {
+function loadStored(key) {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    return JSON.parse(localStorage.getItem(key)) || {};
   } catch {
     return {};
   }
@@ -28,9 +29,10 @@ function cellKeyOf(pos) {
   return `${col},${row}`;
 }
 
-export function useIconPositions(apps) {
+export function useIconPositions(apps, profile) {
+  const key = storageKey(profile);
   const [positions, setPositions] = useState(() => {
-    const stored = loadStored();
+    const stored = loadStored(key);
     const { w, h } = usableSize();
     const { cols, rows } = gridBounds(w, h);
     const occupied = new Set();
@@ -51,8 +53,8 @@ export function useIconPositions(apps) {
   });
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(positions));
-  }, [positions]);
+    localStorage.setItem(key, JSON.stringify(positions));
+  }, [key, positions]);
 
   // Snaps to the nearest grid cell, then nudges to the nearest free one if
   // another icon already sits there. Returns the resolved position so the

@@ -12,6 +12,12 @@ export const LINKS = {
 
 const en = {
   boot: { loading: 'booting pancieriOS...' },
+  profile: {
+    switch: 'Switch profile',
+    language: 'English',
+    dev: { name: 'matheus.dev', role: 'Developer · UI/UX' },
+    editor: { name: 'matheus.edit', role: 'Video Editor' },
+  },
   desktop: {
     apps: {
       home: 'home.mdx',
@@ -21,9 +27,11 @@ const en = {
       github: 'github',
       discord: 'discord',
       linkedin: 'linkedin',
+      ytjobs: 'ytjobs.co',
       chess: 'chess.com',
       notes: 'notes.exe',
     },
+    showcase: { title: 'Works', watch: 'watch' },
   },
   taskbar: {
     petTitle: 'Feed me clicks',
@@ -145,6 +153,7 @@ const en = {
     back: '← back',
     tools: 'Tools',
     visitSite: 'Visit site',
+    videoSoon: 'Video coming soon',
     note: 'This is just some of my side projects that i take on in my free time, my main role is Full Stack Developer at O Grupo Six.',
     bioFile: 'Bio.txt',
     empty: 'Open a project in works/ to read its notes.',
@@ -307,6 +316,12 @@ const en = {
 
 const pt = {
   boot: { loading: 'iniciando pancieriOS...' },
+  profile: {
+    switch: 'Trocar perfil',
+    language: 'Português',
+    dev: { name: 'matheus.dev', role: 'Desenvolvedor · UI/UX' },
+    editor: { name: 'matheus.edit', role: 'Editor de Vídeo' },
+  },
   desktop: {
     apps: {
       home: 'home.mdx',
@@ -316,9 +331,11 @@ const pt = {
       github: 'github',
       discord: 'discord',
       linkedin: 'linkedin',
+      ytjobs: 'ytjobs.co',
       chess: 'chess.com',
       notes: 'notes.exe',
     },
+    showcase: { title: 'Trabalhos', watch: 'assistir' },
   },
   taskbar: {
     petTitle: 'Me alimente com cliques',
@@ -439,6 +456,7 @@ const pt = {
     back: '← voltar',
     tools: 'Ferramentas',
     visitSite: 'Ver site',
+    videoSoon: 'Vídeo em breve',
     note: 'Esses sao alguns projetos paralelos que faço no meu tempo livre, atualmente atuo como Full Stack Developer na O Grupo Six.',
     bioFile: 'Bio.txt',
     empty: 'Abra um projeto em trabalhos/ para ler as notas.',

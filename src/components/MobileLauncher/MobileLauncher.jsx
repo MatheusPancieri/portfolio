@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
+import PixelIcon from "../PixelIcon/PixelIcon.jsx";
+import { USER } from "../PixelIcon/pixelArt.js";
 import { useLang } from "../../context/i18n.jsx";
-import { APPS } from "../apps/apps.jsx";
+import { useProfile } from "../../context/ProfileContext.jsx";
+import { APPS, desktopApps } from "../apps/apps.jsx";
+import WorksCarousel from "../WorksCarousel/WorksCarousel.jsx";
 import { LaunchContext } from "../../context/LaunchContext.jsx";
 import Clock from "../Clock/Clock.jsx";
 import TaskbarPet from "../TaskbarPet/TaskbarPet.jsx";
@@ -9,6 +13,7 @@ import Toast from "../Toast/Toast.jsx";
 
 const MobileLauncher = () => {
   const { c, lang, toggleLang } = useLang();
+  const { profile, logOff } = useProfile();
   const [activeId, setActiveId] = useState(null);
   const [toast, setToast] = useState(null);
   const activeApp = APPS.find((a) => a.id === activeId);
@@ -30,11 +35,20 @@ const MobileLauncher = () => {
     <LaunchContext.Provider value={launch}>
     <div className="fixed inset-0 bg-desk flex flex-col overflow-hidden">
       <div className="grain-layer" />
+      <div className="desk-light" aria-hidden="true" />
 
       {/* Status bar */}
       <div className="relative flex items-center justify-between px-4 h-14 bg-panel-soft border-b-2 border-line shrink-0">
         <TaskbarPet />
         <div className="flex items-center gap-3">
+          <button
+            onClick={logOff}
+            title={c.profile.switch}
+            aria-label={c.profile.switch}
+            className="flex items-center justify-center w-8 h-8 border-2 border-line rounded-md bg-panel text-ink cursor-pointer"
+          >
+            <PixelIcon art={USER} className="w-5 h-5" />
+          </button>
           <button
             onClick={toggleLang}
             className="px-2.5 py-1 border-2 border-line rounded-md bg-panel font-anonymous text-xs font-bold text-ink cursor-pointer"
@@ -48,7 +62,7 @@ const MobileLauncher = () => {
       {/* Home screen grid */}
       <div className="relative flex-1 overflow-y-auto os-scroll p-8">
         <div className="grid grid-cols-3 gap-x-4 gap-y-8 justify-items-center max-w-sm mx-auto">
-          {APPS.filter((app) => !app.hidden).map((app) => (
+          {desktopApps(profile).map((app) => (
             <button
               key={app.id}
               onClick={() => launch(app)}
@@ -61,6 +75,7 @@ const MobileLauncher = () => {
             </button>
           ))}
         </div>
+        {profile === "editor" && <WorksCarousel inline />}
       </div>
 
       {/* Fullscreen app */}

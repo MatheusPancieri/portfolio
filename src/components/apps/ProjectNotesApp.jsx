@@ -1,7 +1,38 @@
 import { useLang } from "../../context/i18n.jsx";
 import { useNotes } from "../../context/NotesContext.jsx";
 import { getProjectMedia } from "../../utils/projectMedia.js";
+import { hasVideo, videoEmbedUrl } from "../../utils/videoEmbed.js";
 import notesIcon from "../../assets/icons/notes.webp";
+
+// Video projects (editor profile): YouTube/Drive embed, or a color-bars
+// slate until the project has a link. Shorts are pillarboxed at 9:16.
+const VideoFrame = ({ project, soonLabel }) => (
+  <div className="relative aspect-video bg-ink rounded-md border-2 border-line shadow-[4px_4px_0_0_rgba(59,51,37,0.7)] overflow-hidden">
+    {hasVideo(project) ? (
+      <iframe
+        className={`absolute inset-y-0 h-full ${
+          project.vertical ? "left-1/2 -translate-x-1/2 aspect-[9/16]" : "inset-x-0 w-full"
+        }`}
+        src={videoEmbedUrl(project)}
+        title={project.name}
+        loading="lazy"
+        allow="encrypted-media; picture-in-picture; fullscreen"
+        allowFullScreen
+      />
+    ) : (
+      <>
+        <div className="absolute inset-0 flex">
+          {["#c0c0c0", "#c0c000", "#00c0c0", "#00c000", "#c000c0", "#c00000", "#0000c0"].map((color) => (
+            <span key={color} className="flex-1 opacity-50" style={{ background: color }} />
+          ))}
+        </div>
+        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1.5 bg-panel border-2 border-line rounded-md font-anonymous text-xs text-ink whitespace-nowrap">
+          {soonLabel}
+        </span>
+      </>
+    )}
+  </div>
+);
 
 const ProjectNotesApp = () => {
   const { c } = useLang();
@@ -17,10 +48,14 @@ const ProjectNotesApp = () => {
     );
   }
 
-  const images = getProjectMedia(project.folder).filter((m) => m.type === "image");
+  const images = project.folder
+    ? getProjectMedia(project.folder).filter((m) => m.type === "image")
+    : [];
 
   return (
     <div className="p-5">
+      {project.video && <VideoFrame project={project} soonLabel={c.works.videoSoon} />}
+
       {images.length > 0 && (
         project.coverBare ? (
           <div className="flex justify-center">
@@ -48,7 +83,7 @@ const ProjectNotesApp = () => {
         )
       )}
 
-      <div className={`flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 ${images.length > 0 ? "mt-4" : ""}`}>
+      <div className={`flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 ${images.length > 0 || project.video ? "mt-4" : ""}`}>
         <h2 className="text-xl font-anonymous font-bold text-ink">
           {project.name}
         </h2>

@@ -1,13 +1,18 @@
 import { useWindows, TASKBAR_H } from "../../context/WindowManager.jsx";
+import PixelIcon from "../PixelIcon/PixelIcon.jsx";
+import { USER } from "../PixelIcon/pixelArt.js";
 import { useLang } from "../../context/i18n.jsx";
+import { useProfile } from "../../context/ProfileContext.jsx";
 import { APPS } from "../apps/apps.jsx";
 import TaskbarPet from "../TaskbarPet/TaskbarPet.jsx";
+import Dock from "../Dock/Dock.jsx";
 import Clock from "../Clock/Clock.jsx";
 import globeIcon from "../../assets/icons/globe.webp";
 
 const Taskbar = () => {
   const { windows, minimize, restore, focus } = useWindows();
   const { c, lang, toggleLang } = useLang();
+  const { logOff } = useProfile();
 
   const topZ = Math.max(0, ...windows.map((w) => w.z));
 
@@ -23,6 +28,10 @@ const Taskbar = () => {
       style={{ height: TASKBAR_H }}
     >
       <TaskbarPet />
+
+      <div className="w-0.5 self-stretch my-2.5 bg-line/20 rounded" />
+
+      <Dock />
 
       <div className="w-0.5 self-stretch my-2.5 bg-line/20 rounded" />
 
@@ -50,6 +59,15 @@ const Taskbar = () => {
             );
           })}
       </div>
+
+      <button
+        onClick={logOff}
+        title={c.profile.switch}
+        aria-label={c.profile.switch}
+        className="flex items-center justify-center w-8 h-8 border-2 border-line rounded-md bg-panel text-ink hover:bg-accent-soft cursor-pointer"
+      >
+        <PixelIcon art={USER} className="w-5 h-5" />
+      </button>
 
       {/* Language toggle */}
       <button

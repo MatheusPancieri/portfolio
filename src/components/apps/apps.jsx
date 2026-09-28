@@ -6,7 +6,10 @@ import NotepadApp from "./NotepadApp.jsx";
 import ContactApp from "./ContactApp.jsx";
 import ChessApp from "./ChessApp.jsx";
 import { LINKS } from "../../utils/content.js";
+import { EDITOR_LINKS } from "../../utils/editorContent.js";
 import IconImg from "../IconImg.jsx";
+import PixelAppIcon from "../PixelIcon/PixelAppIcon.jsx";
+import { YTJOBS } from "../PixelIcon/pixelArt.js";
 import questionBookIcon from "../../assets/icons/question-book.webp";
 import personIcon from "../../assets/icons/person.webp";
 import folderIcon from "../../assets/icons/folder.webp";
@@ -17,12 +20,31 @@ import discordIcon from "../../assets/icons/discord.webp";
 import linkedinIcon from "../../assets/icons/linkedin.webp";
 import chessIcon from "../../assets/icons/chess.webp";
 
+// Desktop apps per profile (null = every visible app not marked `only` for
+// another profile). The editor profile keeps it minimal: its works live on
+// the desktop itself (WorksCarousel).
+const PROFILE_APPS = { dev: null, editor: ["about", "ytjobs", "discord"] };
+
+export const desktopApps = (profile) =>
+  APPS.filter(
+    (a) =>
+      !a.hidden &&
+      (!a.only || a.only === profile) &&
+      (!PROFILE_APPS[profile] || PROFILE_APPS[profile].includes(a.id)),
+  );
+
+// HomeApp and WorksApp import APPS back from this file, so their Component
+// is read through a getter (at render time) rather than while this module
+// evaluates — otherwise whichever side of the cycle loads first can hit the
+// other uninitialized (it breaks under Vite hot reload).
 export const APPS = [
   {
     id: "home",
     label: (c) => c.desktop.apps.home,
     Icon: IconImg(questionBookIcon),
-    Component: HomeApp,
+    get Component() {
+      return HomeApp;
+    },
     w: 520,
     h: 560,
   },
@@ -38,7 +60,9 @@ export const APPS = [
     id: "works",
     label: (c) => c.desktop.apps.works,
     Icon: IconImg(folderIcon),
-    Component: WorksApp,
+    get Component() {
+      return WorksApp;
+    },
     w: 760,
     h: 580,
   },
@@ -85,6 +109,15 @@ export const APPS = [
     label: (c) => c.desktop.apps.linkedin,
     Icon: IconImg(linkedinIcon),
     external: LINKS.linkedin,
+  },
+  {
+    id: "ytjobs",
+    label: (c) => c.desktop.apps.ytjobs,
+    Icon: PixelAppIcon(YTJOBS),
+    external: EDITOR_LINKS.ytjobs,
+    only: "editor",
+    // Without a link there's nothing to open (and no window to fall back to).
+    hidden: !EDITOR_LINKS.ytjobs,
   },
   {
     id: "chess",
