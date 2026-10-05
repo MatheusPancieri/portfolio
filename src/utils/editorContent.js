@@ -55,6 +55,21 @@ export const EDITOR_PROJECTS = [
     },
   },
   {
+    id: 'ai-news',
+    drive: '1CJNriKE2-_mcdiIl91QAKwAYGC_0sedH',
+    duration: '01:00',
+    vertical: false,
+    type: 'longform',
+    tools: ['Premiere Pro', 'After Effects'],
+    title: { en: 'AI news commentary', pt: 'Comentário sobre notícias de IA' },
+    client: { en: 'YouTube channel (trial edit)', pt: 'Canal do YouTube (edição teste)' },
+    role: { en: 'Edit and motion graphics', pt: 'Edição e motion graphics' },
+    description: {
+      en: 'Talking-head commentary on AI news: animated tweet cards, logo pops and article callouts cut around the host.',
+      pt: 'Comentário em talking head sobre notícias de IA: tweets animados, logos saltando e trechos de artigos intercalados com o apresentador.',
+    },
+  },
+  {
     id: 'flashing-lights',
     drive: '1THDnIag_SQUyq_he0QOMGLRjiv6KZDgQ',
     duration: '00:17',
